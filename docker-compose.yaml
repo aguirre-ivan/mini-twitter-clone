@@ -1,0 +1,38 @@
+version: '1.0'
+
+services:
+  apache2:
+    build:
+      dockerfile: Dockerfile
+    container_name: php-miniprojects-server
+    ports:
+      - '81:80'
+    links:
+      - mariadb:mariadb
+    volumes:
+      - './:/var/www/html'
+    networks:
+      php-miniprojects-network:
+        aliases:
+          - apache2
+
+  mariadb:
+    image: mariadb:10.9.1-rc
+    container_name: mariadb-server
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      php-miniprojects-network:
+        aliases:
+          - mariadb
+
+networks:
+  php-miniprojects-network:
+    name: php-miniprojects-net
+    driver: bridge
+    ipam:
+      driver: default
