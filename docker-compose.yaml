@@ -4,7 +4,7 @@ services:
   apache2:
     build:
       dockerfile: Dockerfile
-    container_name: php-miniprojects-server
+    container_name: mini-twitter-server
     ports:
       - '81:80'
     links:
@@ -12,7 +12,7 @@ services:
     volumes:
       - './:/var/www/html'
     networks:
-      php-miniprojects-network:
+      mini-twitter-network:
         aliases:
           - apache2
 
@@ -26,13 +26,13 @@ services:
     volumes:
       - ./init:/docker-entrypoint-initdb.d
     networks:
-      php-miniprojects-network:
+      mini-twitter-network:
         aliases:
           - mariadb
 
 networks:
-  php-miniprojects-network:
-    name: php-miniprojects-net
+  mini-twitter-network:
+    name: mini-twitter-net
     driver: bridge
     ipam:
       driver: default
