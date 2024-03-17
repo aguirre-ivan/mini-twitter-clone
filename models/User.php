@@ -12,4 +12,10 @@ class User {
         return $this->pdo->lastInsertId();
     }
     
+    public function userExists($username, $email) {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
+        $stmt->execute(['username' => $username, 'email' => $email]);
+        $count = $stmt->fetchColumn();
+        return $count > 0;
+    }
 }
