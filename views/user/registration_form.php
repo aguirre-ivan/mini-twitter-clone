@@ -1,5 +1,5 @@
+<?php session_start(); ?>
 <?php require_once '../partials/head.html'; ?>
-
 <body>
     <?php require_once '../partials/header.php'; ?>
 

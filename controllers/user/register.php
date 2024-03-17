@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    header("Location: ../../../index.php");
+    header("Location: ../../views/user/registration_form.php");
 } else {
     header("Location: ../../../index.php");
 }
