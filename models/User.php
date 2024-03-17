@@ -7,11 +7,12 @@ class User {
     }
 
     public function createUser($username, $email, $password) {
+        $password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
         $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password]);
         return $this->pdo->lastInsertId();
     }
-    
+
     public function userExists($username, $email) {
         $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
         $stmt->execute(['username' => $username, 'email' => $email]);

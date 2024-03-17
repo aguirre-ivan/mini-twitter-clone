@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $user->createUser($username, $email, $password);
         header("Location: ../../views/user/registration-successful.php");
+        exit();
     }
 
     header("Location: ../../views/user/registration-form.php");

@@ -5,7 +5,7 @@
     <?php require_once '../partials/header.html'; ?>
 
     <div class="registration-form">
-        <h1>Sign up</h1>
+        <h1>Registrarse</h1>
         <form action="../../controllers/user/register.php" method="post">
             <?php if (isset($_SESSION['registration_error'])) : ?>
                 <div class="registration-error">
@@ -25,7 +25,7 @@
             <input type="email" name="email" placeholder="Correo electrónico">
             <label for="password">Contraseña</label>
             <input type="password" name="password" placeholder="Contraseña">
-            <button type="submit">Registrarse</button>
+            <button type="submit">Unirse</button>
         </form>
     </div>
 
