@@ -13,16 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($password)) {
         $error = "El nombre de usuario y la contraseña son obligatorios";
         $_SESSION['login_error'] = $error;
-        header("Location: ../../views/user/login-form.php");
+        header("Location: ../../views/user/login_form.php");
     } else {
         $login = $user->login($username, $password);
         if (!$login) {
             $error = "El nombre de usuario o la contraseña son incorrectos";
             $_SESSION['login_error'] = $error;
-            header("Location: ../../views/user/login-form.php");
+            header("Location: ../../views/user/login_form.php");
+        } else {
+            $_SESSION['user_id'] = $login;
+            header("Location: ../../views/user/login_successful.php");
         }
-        header("Location: ../../views/user/login-successful.php");
     }
 } else {
-    header("Location: ../../views/user/login-form.php");
+    header("Location: ../../views/user/login_form.php");
 }

@@ -9,14 +9,8 @@
         <form action="../../controllers/user/login.php" method="post">
             <?php if (isset($_SESSION['login_error'])) : ?>
                 <div class="login-error">
-                    <ul>
-                        <?php foreach ($_SESSION['login_error'] as $error) : ?>
-                            <li>
-                                <?= $error; ?>
-                            </li>
-                        <?php endforeach; ?>
-                        <?php unset($_SESSION['login_error']); ?>
-                    </ul>
+                    <?= $_SESSION['login_error']; ?>
+                    <?php unset($_SESSION['login_error']); ?>
                 </div>
             <?php endif; ?>
             <label for="username">Usuario</label>

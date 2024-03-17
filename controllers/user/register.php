@@ -20,11 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['registration_error'] = array($error);
     } else {
         $user->createUser($username, $email, $password);
-        header("Location: ../../views/user/registration-successful.php");
+        header("Location: ../../views/user/registration_successful.php");
         exit();
     }
 
-    header("Location: ../../views/user/registration-form.php");
+    header("Location: ../../../index.php");
 } else {
-    header("Location: ../../views/user/registration-form.php");
+    header("Location: ../../../index.php");
 }
