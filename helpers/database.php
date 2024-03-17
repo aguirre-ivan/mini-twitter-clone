@@ -12,4 +12,8 @@ class Database {
     public function getPdo() {
         return $this->pdo;
     }
+
+    public function getConnectionStatus() {
+        return $this->pdo->getAttribute(PDO::ATTR_CONNECTION_STATUS);
+    }
 }

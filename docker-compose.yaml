@@ -19,6 +19,8 @@ services:
   mariadb:
     image: mariadb:10.9.1-rc
     container_name: mariadb-server
+    ports:
+      - '3306:3306'
     env_file:
       - .env
     environment:

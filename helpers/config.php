@@ -1,6 +1,7 @@
 <?php
 
 require_once('database.php');
+require_once('functions.php');
 
 define('ENV_FILE_PATH', __DIR__ . '/../.env');
 
