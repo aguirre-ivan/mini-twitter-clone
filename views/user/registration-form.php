@@ -9,18 +9,22 @@
         <form action="../../controllers/user/register.php" method="post">
             <?php if (isset($_SESSION['registration_error'])) : ?>
                 <div class="registration-error">
-                    <?php
-                    echo $_SESSION['registration_error'];
-                    unset($_SESSION['registration_error']);
-                    ?>
+                    <ul>
+                        <?php foreach ($_SESSION['registration_error'] as $error) : ?>
+                            <li>
+                                <?= $error; ?>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php unset($_SESSION['registration_error']); ?>
+                    </ul>
                 </div>
             <?php endif; ?>
             <label for="username">Usuario</label>
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="text" name="username" placeholder="Nombre de usuario">
             <label for="email">Correo electrónico</label>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="email" name="email" placeholder="Correo electrónico">
             <label for="password">Contraseña</label>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="password" placeholder="Contraseña">
             <button type="submit">Registrarse</button>
         </form>
     </div>
