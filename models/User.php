@@ -13,6 +13,16 @@ class User {
         return $this->pdo->lastInsertId();
     }
 
+    public function login($username, $password) {
+        $stmt = $this->pdo->prepare("SELECT id, username, password FROM users WHERE username = :username");
+        $stmt->execute(['username' => $username]);
+        $user = $stmt->fetch();
+        if ($user && password_verify($password, $user['password'])) {
+            return $user['id'];
+        }
+        return false;
+    }
+
     public function userExists($username, $email) {
         $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
         $stmt->execute(['username' => $username, 'email' => $email]);
