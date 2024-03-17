@@ -4,7 +4,7 @@
 <?php require_once('./views/partials/head.html') ?>
 
 <body>
-    <?php require_once('./views/partials/header.html') ?>
+    <?php require_once('./views/partials/header.php') ?>
 
     <?php
     if (isset($_SESSION['user_id'])) {

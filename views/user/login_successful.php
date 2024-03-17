@@ -1,7 +1,7 @@
 <?php require_once '../partials/head.html'; ?>
 
 <body>
-    <?php require_once '../partials/header.html'; ?>
+    <?php require_once '../partials/header.php'; ?>
 
     <div class="login-successful">
         <h1>Bienvenido</h1>
