@@ -1,0 +1,17 @@
+@import "./Sass/normalize";
+@import "./Sass/header";
+@import "./Sass/generics";
+@import "./Sass/landing-page";
+@import "./Sass/login-page";
+@import "./Sass/footer";
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(21, 32, 43);
+
+    & > div {
+        flex-grow: 1;
+    }
+}

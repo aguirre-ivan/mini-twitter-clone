@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  all: unset;
+}
+
+.page-site-branding {
+  width: 60px;
+  height: 60px;
+}
+.page-site-branding svg {
+  height: 100%;
+  width: 100%;
+}
+
+.twitter-btn {
+  padding: 15px;
+  border-radius: 100px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 100%;
+}
+.twitter-btn.twitter-btn--lightblue {
+  background-color: rgb(29, 155, 240);
+  color: #fff;
+}
+.twitter-btn.twitter-btn--lightblue:hover {
+  background-color: rgb(26, 145, 220);
+}
+.twitter-btn.twitter-btn--dark {
+  color: rgb(29, 155, 240);
+  background-color: transparent;
+  border-color: rgb(83, 100, 113);
+  border: solid 1px;
+}
+.twitter-btn.twitter-btn--dark:hover {
+  background-color: rgb(83, 100, 113);
+  color: #fff;
+}
+
+.twitter-sign-input {
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 100%;
+  border-color: rgb(51, 54, 57);
+}
+
+.alert-box {
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 100%;
+  color: #fff;
+}
+.alert-box.alert-box--success {
+  background-color: rgb(29, 161, 242);
+}
+.alert-box.alert-box--error {
+  background-color: rgb(224, 36, 94);
+}
+
+.user-not-logged-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-not-logged-in .landing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 600px;
+  padding: 40px;
+}
+@media screen and (min-width: 1000px) {
+  .user-not-logged-in .landing-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    max-width: unset;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .user-not-logged-in .landing-container {
+    gap: 200px;
+  }
+}
+.user-not-logged-in .landing-container__site-branding {
+  width: 60px;
+  height: 60px;
+}
+@media screen and (min-width: 1000px) {
+  .user-not-logged-in .landing-container__site-branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+  }
+}
+.user-not-logged-in .landing-container__site-branding svg {
+  height: 100%;
+  width: 100%;
+}
+.user-not-logged-in .landing-container__body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media screen and (min-width: 1000px) {
+  .user-not-logged-in .landing-container__body {
+    max-width: 500px;
+  }
+}
+.user-not-logged-in .landing-container__body h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+}
+.user-not-logged-in .landing-container__body .register-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+}
+.user-not-logged-in .landing-container__body .register-container h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.user-not-logged-in .landing-container__body .register-container__terms {
+  color: rgb(113, 118, 123);
+  font-size: 0.7rem;
+}
+.user-not-logged-in .landing-container__body .login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+}
+.user-not-logged-in .landing-container__body .login-container h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.login-page, .registration-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 600px;
+  padding: 40px;
+}
+.login-page__form, .registration-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.login-page__form h1, .registration-page__form h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.login-page__form form, .registration-page__form form {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-direction: column;
+  max-width: 500px;
+}
+.login-page__signup, .login-page__signin, .registration-page__signup, .registration-page__signin {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login-page__signup p, .login-page__signin p, .registration-page__signup p, .registration-page__signin p {
+  font-weight: bold;
+  color: #fff;
+}
+.login-page__signup p a, .login-page__signin p a, .registration-page__signup p a, .registration-page__signin p a {
+  color: rgb(29, 155, 240);
+}
+
+.login-successful-page, .registration-successful-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 600px;
+  padding: 40px;
+}
+.login-successful-page__body, .registration-successful-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login-successful-page__body h1, .registration-successful-page__body h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+}
+.login-successful-page__body p, .registration-successful-page__body p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+.login-successful-page__body a, .registration-successful-page__body a {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: rgb(29, 155, 240);
+}
+
+footer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  gap: 15px;
+}
+footer p {
+  color: white;
+  font-weight: bold;
+}
+footer ul {
+  display: flex;
+  gap: 15px;
+}
+footer ul i {
+  font-size: 1.7rem;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+footer ul i:hover {
+  color: rgb(29, 155, 240);
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(21, 32, 43);
+}
+body > div {
+  flex-grow: 1;
+}/*# sourceMappingURL=styles.css.map */
