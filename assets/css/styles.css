@@ -168,40 +168,40 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.login-page {
+.login-page, .registration-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-width: 600px;
   padding: 40px;
 }
-.login-page__form {
+.login-page__form, .registration-page__form {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
-.login-page__form h1 {
+.login-page__form h1, .registration-page__form h1 {
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
 }
-.login-page__form form {
+.login-page__form form, .registration-page__form form {
   display: flex;
   align-items: center;
   gap: 40px;
   flex-direction: column;
   max-width: 500px;
 }
-.login-page__signup {
+.login-page__signup, .login-page__signin, .registration-page__signup, .registration-page__signin {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.login-page__signup p {
+.login-page__signup p, .login-page__signin p, .registration-page__signup p, .registration-page__signin p {
   font-weight: bold;
   color: #fff;
 }
-.login-page__signup p a {
+.login-page__signup p a, .login-page__signin p a, .registration-page__signup p a, .registration-page__signin p a {
   color: rgb(29, 155, 240);
 }
 

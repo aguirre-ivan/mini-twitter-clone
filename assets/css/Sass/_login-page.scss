@@ -1,4 +1,4 @@
-.login-page {
+.login-page, .registration-page {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -25,7 +25,7 @@
         }
     }
 
-    &__signup {
+    &__signup, &__signin {
         display: flex;
         flex-direction: column;
         gap: 15px;
