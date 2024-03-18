@@ -5,16 +5,6 @@
     max-width: 600px;
     padding: 40px;
 
-    &__icon {
-        width: 60px;
-        height: 60px;
-
-        svg {
-            height: 100%;
-            width: 100%;
-        }
-    }
-
     &__form {
         display: flex;
         flex-direction: column;
@@ -47,6 +37,38 @@
             a {
                 color: rgb(29, 155, 240);
             }
+        }
+    }
+}
+
+.login-successful-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+    padding: 40px;
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        a {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: rgb(29, 155, 240);
         }
     }
 }

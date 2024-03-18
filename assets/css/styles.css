@@ -23,6 +23,15 @@ h1, h2, h3, h4, h5, h6 {
   all: unset;
 }
 
+.page-site-branding {
+  width: 60px;
+  height: 60px;
+}
+.page-site-branding svg {
+  height: 100%;
+  width: 100%;
+}
+
 .twitter-btn {
   padding: 15px;
   border-radius: 100px;
@@ -100,12 +109,12 @@ h1, h2, h3, h4, h5, h6 {
     gap: 200px;
   }
 }
-.user-not-logged-in .landing-container__icon {
+.user-not-logged-in .landing-container__site-branding {
   width: 60px;
   height: 60px;
 }
 @media screen and (min-width: 1000px) {
-  .user-not-logged-in .landing-container__icon {
+  .user-not-logged-in .landing-container__site-branding {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,7 +122,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 400px;
   }
 }
-.user-not-logged-in .landing-container__icon svg {
+.user-not-logged-in .landing-container__site-branding svg {
   height: 100%;
   width: 100%;
 }
@@ -166,14 +175,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 600px;
   padding: 40px;
 }
-.login-page__icon {
-  width: 60px;
-  height: 60px;
-}
-.login-page__icon svg {
-  height: 100%;
-  width: 100%;
-}
 .login-page__form {
   display: flex;
   flex-direction: column;
@@ -201,6 +202,34 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .login-page__signup p a {
+  color: rgb(29, 155, 240);
+}
+
+.login-successful-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 600px;
+  padding: 40px;
+}
+.login-successful-page__body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.login-successful-page__body h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #fff;
+}
+.login-successful-page__body p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+.login-successful-page__body a {
+  font-size: 1.3rem;
+  font-weight: bold;
   color: rgb(29, 155, 240);
 }
 
