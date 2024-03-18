@@ -1,14 +1,9 @@
-<header>
-    <nav class="site-header">
-        <div class="site-branding">
-            <img>
-        </div> 
-        <ul class="main-menu">
-            <?php if (isset($_SESSION['user_id'])) : ?>
+<?php if (isset($_SESSION['user_id'])) : ?>
+    <header class="site-header">
+        <nav>
+            <ul class="main-menu">
                 <li><a href="/controllers/user/logout.php">Cerrar sesión</a></li>
-            <?php else : ?>
-                <li><a href="../../index.php">Inicio</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
-</header>
+            </ul>
+        </nav>
+    </header>
+<?php endif; ?>
