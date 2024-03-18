@@ -205,29 +205,29 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(29, 155, 240);
 }
 
-.login-successful-page {
+.login-successful-page, .registration-successful-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-width: 600px;
   padding: 40px;
 }
-.login-successful-page__body {
+.login-successful-page__body, .registration-successful-page__body {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
-.login-successful-page__body h1 {
+.login-successful-page__body h1, .registration-successful-page__body h1 {
   font-size: 4rem;
   font-weight: 900;
   color: #fff;
 }
-.login-successful-page__body p {
+.login-successful-page__body p, .registration-successful-page__body p {
   font-size: 1.3rem;
   font-weight: bold;
   color: #fff;
 }
-.login-successful-page__body a {
+.login-successful-page__body a, .registration-successful-page__body a {
   font-size: 1.3rem;
   font-weight: bold;
   color: rgb(29, 155, 240);
