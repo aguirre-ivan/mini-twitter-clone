@@ -255,8 +255,28 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(29, 155, 240);
 }
 
+.profile-page-container,
 .feed-page-container {
   max-width: 700px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 35px;
+  border: 0.5px solid gray;
+}
+.profile-container__username {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.profile-container__username::before {
+  content: "@";
+}
+.profile-container__email {
+  color: #8b98a5;
+  font-size: 1.5rem;
 }
 
 .add-tweet-form {
