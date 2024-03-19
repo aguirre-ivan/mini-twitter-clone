@@ -234,6 +234,57 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(29, 155, 240);
 }
 
+.feed-page-container {
+  max-width: 700px;
+}
+
+.add-tweet-form {
+  position: relative;
+  height: 155px;
+}
+.add-tweet-form textarea.twitter-sign-input {
+  background-color: transparent;
+  border-radius: 0;
+  border: solid 0.5px gray;
+  resize: none;
+  position: absolute;
+}
+.add-tweet-form textarea.twitter-sign-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.add-tweet-form button.twitter-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  width: auto;
+  font-size: 1rem;
+}
+
+.tweets-container {
+  border: solid 0.5px gray;
+  display: flex;
+  flex-direction: column;
+}
+.tweets-container .tweet {
+  border-bottom: solid 0.5px gray;
+  padding: 15px;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.tweets-container .tweet:last-child {
+  border-bottom: none;
+}
+.tweets-container .tweet__username {
+  font-weight: bold;
+  color: #8b98a5;
+}
+.tweets-container .tweet__username::before {
+  content: "@";
+}
+
 footer {
   background-color: black;
   display: flex;

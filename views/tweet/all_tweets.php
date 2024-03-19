@@ -8,8 +8,8 @@ require_once './controllers/tweet/all.php';
     <div class="tweets-container">
         <?php foreach ($tweets_array as $tweet) : ?>
             <div class="tweet">
-                <p><?= $tweet['username'] ?></p>
-                <p><?= $tweet['tweet'] ?></p>
+                <div class="tweet__username"><?= $tweet['username'] ?></div>
+                <div class="tweet__body"><?= $tweet['tweet'] ?></div>
             </div>
         <?php endforeach; ?>
     </div>

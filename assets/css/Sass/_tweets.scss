@@ -1,0 +1,57 @@
+.feed-page-container {
+    max-width: 700px;
+}
+
+.add-tweet-form {
+    position: relative;
+    height: 155px;
+
+    textarea.twitter-sign-input {
+        background-color: transparent;
+        border-radius: 0;
+        border: solid 0.5px gray;
+        resize: none;
+        position: absolute;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    button.twitter-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 5px 15px;
+        width: auto;
+        font-size: 1rem;
+    }
+}
+
+.tweets-container {
+    border: solid 0.5px gray;
+    display: flex;
+    flex-direction: column;
+
+    .tweet {
+        border-bottom: solid 0.5px gray;
+        padding: 15px;
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &__username {
+            font-weight: bold;
+            color: #8b98a5;
+
+            &::before {
+                content: '@';
+            }
+        }
+    }
+}
