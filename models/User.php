@@ -29,4 +29,10 @@ class User {
         $count = $stmt->fetchColumn();
         return $count > 0;
     }
+
+    public function getUserById($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
+    }
 }

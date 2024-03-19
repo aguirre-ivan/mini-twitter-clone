@@ -10,5 +10,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tweet_content = $_POST['tweet_content'];
     $tweet = new Tweet($pdo);
     $tweet->createTweet($user_id, $tweet_content);
-    header('Location: ../../views/feed.php');
+    header('Location: ../../index.php');
 }

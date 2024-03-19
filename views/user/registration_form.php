@@ -20,8 +20,8 @@ if (isset($_SESSION['user_id'])) {
             <h1>Registrarse en Twitter</h1>
             <form action="../../controllers/user/register.php" method="post">
                 <?php if (isset($_SESSION['registration_error'])) : ?>
-                    <div class="registration-error">
-                        <ul>
+                    <div class="registration-error alert-box alert-box--error">
+                        <ul class="m-0 p-0">
                             <?php foreach ($_SESSION['registration_error'] as $error) : ?>
                                 <li>
                                     <?= $error; ?>
