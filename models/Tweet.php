@@ -18,4 +18,10 @@ class Tweet {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function getAllTweetsByUser($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM tweets WHERE user_id = :user_id ORDER BY created_at DESC");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll();
+    }
 }

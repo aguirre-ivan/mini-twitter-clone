@@ -15,6 +15,7 @@ foreach ($tweets as $tweet) {
     $tweet_array = array();
     $tweet_array['id'] = $tweet['id'];
     $tweet_array['username'] = $user_data['username'];
+    $tweet_array['user_id'] = $user_data['id'];
     $tweet_array['tweet'] = $tweet['tweet'];
     array_push($tweets_array, $tweet_array);
 }
