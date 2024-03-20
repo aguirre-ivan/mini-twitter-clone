@@ -3,7 +3,7 @@ version: '1.0'
 services:
   apache2:
     build:
-      dockerfile: Dockerfile
+      dockerfile: docker-config/Dockerfile
     container_name: mini-twitter-server
     ports:
       - '81:80'
@@ -22,11 +22,12 @@ services:
     ports:
       - '3306:3306'
     env_file:
-      - .env
+      - ../.env
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASS}"
     volumes:
-      - ./init:/docker-entrypoint-initdb.d
+      - ./docker-config/database/init:/docker-entrypoint-initdb.d
+      - ./docker-config/database/data:/var/lib/mysql
     networks:
       mini-twitter-network:
         aliases:
