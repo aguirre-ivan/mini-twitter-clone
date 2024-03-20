@@ -6,7 +6,7 @@ services:
       dockerfile: docker-config/Dockerfile
     container_name: mini-twitter-server
     ports:
-      - '81:80'
+      - '80:80'
     links:
       - mariadb:mariadb
     volumes:
@@ -22,7 +22,7 @@ services:
     ports:
       - '3306:3306'
     env_file:
-      - ../.env
+      - .env
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASS}"
     volumes:
