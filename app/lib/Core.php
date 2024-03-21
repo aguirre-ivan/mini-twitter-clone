@@ -9,20 +9,19 @@ class Core
     public function __construct()
     {
         $url = $this->getUrl();
+        $this->controller = new Controller;
 
-        if (empty($url)) {
-            $this->controller = new Controller;
-            $this->method = 'loadView';
-            $this->parameters = ['index'];
+        if (empty($url) or ($url[0] == 'inicio' and count($url) == 1)) {
+            $this->method = 'indexPage';
         } else {
             $controllerName = ucwords($url[0] ?? '') . 'Controller';
-            $methodName = $url[1] ?? 'index';
             $controllerFile = '../app/controllers/' . $controllerName . '.php';
-    
+            $methodName = $url[1] ?? 'inicio';
+
             if (file_exists($controllerFile)) {
                 require_once $controllerFile;
                 $this->controller = new $controllerName;
-    
+
                 if (method_exists($this->controller, $methodName)) {
                     $this->method = $methodName;
                     $this->parameters = array_slice($url, 2);
@@ -30,15 +29,12 @@ class Core
                     $this->method = 'notFound';
                 }
             } else {
-                $this->controller = new Controller;
                 $this->method = 'notFound';
             }
         }
 
         call_user_func_array([$this->controller, $this->method], $this->parameters);
     }
-
-
 
     public function getUrl()
     {

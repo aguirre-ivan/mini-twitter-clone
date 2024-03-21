@@ -22,4 +22,13 @@ class Controller
     {
         require_once '../app/views/pages/page_not_found.php';
     }
+
+    public function indexPage()
+    {
+        if (isset($_SESSION['user_id'])) {
+            require_once '../app/views/pages/feed.php';
+        } else {
+            require_once '../app/views/pages/landing.php';
+        }
+    }
 }
