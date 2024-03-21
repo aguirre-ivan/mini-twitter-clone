@@ -21,8 +21,6 @@ services:
     container_name: mariadb-server
     ports:
       - '3306:3306'
-    env_file:
-      - ./database/.env
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASS}"
     volumes:
