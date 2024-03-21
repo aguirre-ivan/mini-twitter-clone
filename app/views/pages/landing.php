@@ -1,3 +1,6 @@
+<?php require_once APP . '/views/partials/head.php' ?>
+<?php require_once APP . '/views/partials/header.php' ?>
+
 <div class="user-not-logged-in">
     <div class="landing-container container">
         <div class="landing-container__site-branding page-site-branding">
@@ -27,3 +30,5 @@
         </div>
     </div>
 </div>
+
+<?php require_once APP . '/views/partials/footer.php' ?>

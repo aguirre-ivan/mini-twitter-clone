@@ -28,7 +28,7 @@ class Controller
         if (isset($_SESSION['user_id'])) {
             require_once '../app/views/pages/feed.php';
         } else {
-            require_once '../app/views/pages/landing.php';
+            $this->loadView('landing', ['title' => 'Mini Twitter']);
         }
     }
 }
