@@ -22,7 +22,7 @@ services:
     ports:
       - '3306:3306'
     env_file:
-      - .env
+      - ./database/.env
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_PASS}"
     volumes:
