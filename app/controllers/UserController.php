@@ -2,21 +2,28 @@
 
 class UserController extends Controller
 {
+    public function inicio()
+    {
+        $this->profile();
+    }
+
     public function profile()
     {
         if (!isset($_SESSION['user_id'])) {
             $this->indexPage();
+        } else {
+            $this->loadModel('User');
+            $user = new User();
+            $user_data = $user->getUserById($_SESSION['user_id']);
+            $this->loadView('profile', ['title' => 'Perfil', 'user_data' => $user_data]);
         }
-        $this->loadView('profile');
     }
 
     public function login()
     {
         if (isset($_SESSION['user_id'])) {
             $this->profile();
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->loadModel('User');
             $user = new User();
 
@@ -47,9 +54,7 @@ class UserController extends Controller
     {
         if (isset($_SESSION['user_id'])) {
             $this->indexPage();
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->loadModel('User');
             $user = new User();
 

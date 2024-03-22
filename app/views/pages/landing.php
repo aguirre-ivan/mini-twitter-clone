@@ -25,7 +25,7 @@
                 <h3 class="lh-1">
                     ¿Ya tienes una cuenta?
                 </h3>
-                <a class="twitter-btn twitter-btn--dark" href="/views/user/login_form.php">Iniciar sesión</a>
+                <a class="twitter-btn twitter-btn--dark" href="/user/login">Iniciar sesión</a>
             </div>
         </div>
     </div>
