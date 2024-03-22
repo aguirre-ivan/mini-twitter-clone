@@ -1,39 +1,44 @@
 <?php
 
-class UserController extends Controller {
-    public function profile() {
+class UserController extends Controller
+{
+    public function profile()
+    {
         if (!isset($_SESSION['user_id'])) {
             $this->indexPage();
         }
         $this->loadView('profile');
     }
 
-    public function login() {
+    public function register()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $this->indexPage();
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $pdo = Database::getInstance()->getPdo();
-            $user = new User($pdo);
-        
+            $this->loadModel('User');
+            $user = new User();
+
             $username = $_POST['username'];
+            $email = $_POST['email'];
             $password = $_POST['password'];
-        
-            if (empty($username) || empty($password)) {
-                $error = "El nombre de usuario y la contraseña son obligatorios";
-                $_SESSION['login_error'] = $error;
-                header("Location: ../../views/user/login_form.php");
+
+            $validation = register_validation($username, $email, $password);
+
+            if (!empty($validation)) {
+                $registration_errors = $validation;
+                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
+            } elseif ($user->userExists($username, $email)) {
+                $error = "El usuario o el correo electrónico ya están en uso";
+                $registration_errors = array($error);
+                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
             } else {
-                $login = $user->login($username, $password);
-                if (!$login) {
-                    $error = "El nombre de usuario o la contraseña son incorrectos";
-                    $_SESSION['login_error'] = $error;
-                    header("Location: ../../views/user/login_form.php");
-                } else {
-                    $_SESSION['user_id'] = $login;
-                    header("Location: ../../views/user/login_successful.php");
-                }
+                $user->createUser($username, $email, $password);
+                $this->loadView('register_successful', ['title' => 'Registro existoso']);
             }
         } else {
-            header("Location: ../../views/user/login_form.php");
+            $this->loadView('register', ['title' => 'Registrarse']);
         }
-        $this->loadView('login');
     }
 }
