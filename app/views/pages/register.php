@@ -11,7 +11,7 @@
         </div>
         <div class="registration-page__form">
             <h1>Registrarse en Twitter</h1>
-            <form action="register" method="post">
+            <form action="" method="post">
                 <?php if (isset($page_data['registration_errors'])) : ?>
                     <div class="registration-error alert-box alert-box--error">
                         <ul class="m-0 p-0">
@@ -31,7 +31,7 @@
             </form>
         </div>
         <div class="registration-page__signin">
-            <p>¿Ya tienes cuenta? <a href="login_form.php">Iniciá sesion</a></p>
+            <p>¿Ya tienes cuenta? <a href="/user/login">Iniciá sesion</a></p>
         </div>
     </div>
 

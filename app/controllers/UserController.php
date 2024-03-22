@@ -10,6 +10,39 @@ class UserController extends Controller
         $this->loadView('profile');
     }
 
+    public function login()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $this->profile();
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $this->loadModel('User');
+            $user = new User();
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $validation = login_validation($username, $password);
+
+            if (!empty($validation)) {
+                $login_errors = $validation;
+                $this->loadView('login', ['title' => 'Iniciar sesión', 'login_errors' => $login_errors]);
+            } else {
+                $login = $user->login($username, $password);
+                if (!$login) {
+                    $login_errors = array("El nombre de usuario o la contraseña son incorrectos");
+                    $this->loadView('login', ['title' => 'Iniciar sesión', 'login_errors' => $login_errors]);
+                } else {
+                    $_SESSION['user_id'] = $login;
+                    $this->loadView('login_successful', ['title' => 'Bienvenido']);
+                }
+            }
+        } else {
+            $this->loadView('login', ['title' => 'Iniciar sesión']);
+        }
+    }
+
     public function register()
     {
         if (isset($_SESSION['user_id'])) {
