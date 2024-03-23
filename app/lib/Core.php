@@ -11,12 +11,12 @@ class Core
         $url = $this->getUrl();
         $this->controller = new Controller;
 
-        if (empty($url) or ($url[0] == 'inicio' and count($url) == 1)) {
-            $this->method = 'indexPage';
+        if (empty($url) or ($url[0] == 'index' and count($url) == 1)) {
+            $this->method = 'index';
         } else {
             $controllerName = ucwords($url[0] ?? '') . 'Controller';
             $controllerFile = '../app/controllers/' . $controllerName . '.php';
-            $methodName = $url[1] ?? 'inicio';
+            $methodName = $url[1] ?? 'index';
 
             if (file_exists($controllerFile)) {
                 require_once $controllerFile;

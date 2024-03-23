@@ -23,12 +23,12 @@ class Controller
         require_once '../app/views/pages/page_not_found.php';
     }
 
-    public function indexPage()
+    public function index(){
+        $this->loadView('index');
+    }
+
+    public function redirect($location)
     {
-        if (isset($_SESSION['user_id'])) {
-            require_once '../app/views/pages/feed.php';
-        } else {
-            $this->loadView('landing', ['title' => 'Mini Twitter']);
-        }
+        header("Location: $location");
     }
 }

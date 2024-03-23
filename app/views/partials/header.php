@@ -2,10 +2,10 @@
     <header class="site-header">
         <nav>
             <ul class="main-menu">
-                <li><a href="/inicio">Inicio</a></li>
+                <li><a href="/index">index</a></li>
                 <li><a href="/user">Perfil</a></li>
-                <li><a href="/explorar">A quien seguir</a></li>
-                <li><a href="/logout">Cerrar sesión</a></li>
+                <li><a href="/user/explore">A quien seguir</a></li>
+                <li><a href="/user/logout">Cerrar sesión</a></li>
             </ul>
         </nav>
     </header>

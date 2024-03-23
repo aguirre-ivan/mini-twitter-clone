@@ -2,7 +2,7 @@
 
 class UserController extends Controller
 {
-    public function inicio()
+    public function index()
     {
         $this->profile();
     }
@@ -10,7 +10,7 @@ class UserController extends Controller
     public function profile()
     {
         if (!isset($_SESSION['user_id'])) {
-            $this->indexPage();
+            $this->redirect('/index');
         } else {
             $this->loadModel('User');
             $user = new User();
@@ -19,10 +19,40 @@ class UserController extends Controller
         }
     }
 
+    public function register()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $this->redirect('/user/profile');
+        } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $this->loadModel('User');
+            $user = new User();
+
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $validation = register_validation($username, $email, $password);
+
+            if (!empty($validation)) {
+                $registration_errors = $validation;
+                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
+            } elseif ($user->userExists($username, $email)) {
+                $error = "El usuario o el correo electrónico ya están en uso";
+                $registration_errors = array($error);
+                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
+            } else {
+                $user->createUser($username, $email, $password);
+                $this->loadView('register_successful', ['title' => 'Registro existoso']);
+            }
+        } else {
+            $this->loadView('register', ['title' => 'Registrarse']);
+        }
+    }
+
     public function login()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->profile();
+            $this->redirect('/user/profile');
         } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->loadModel('User');
             $user = new User();
@@ -50,33 +80,9 @@ class UserController extends Controller
         }
     }
 
-    public function register()
+    public function logout()
     {
-        if (isset($_SESSION['user_id'])) {
-            $this->indexPage();
-        } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $this->loadModel('User');
-            $user = new User();
-
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $validation = register_validation($username, $email, $password);
-
-            if (!empty($validation)) {
-                $registration_errors = $validation;
-                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
-            } elseif ($user->userExists($username, $email)) {
-                $error = "El usuario o el correo electrónico ya están en uso";
-                $registration_errors = array($error);
-                $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
-            } else {
-                $user->createUser($username, $email, $password);
-                $this->loadView('register_successful', ['title' => 'Registro existoso']);
-            }
-        } else {
-            $this->loadView('register', ['title' => 'Registrarse']);
-        }
+        session_destroy();
+        $this->redirect('/index');
     }
 }
