@@ -15,7 +15,10 @@ class UserController extends Controller
             $this->loadModel('User');
             $user = new User();
             $user_data = $user->getUserById($_SESSION['user_id']);
-            $this->loadView('profile', ['title' => 'Perfil', 'user_data' => $user_data]);
+            $this->loadController('TweetController');
+            $tweetController = new TweetController();
+            $tweets = $tweetController->tweetsByUser($_SESSION['user_id']);
+            $this->loadView('profile', ['title' => 'Perfil', 'user_data' => $user_data, 'tweets' => $tweets]);
         }
     }
 

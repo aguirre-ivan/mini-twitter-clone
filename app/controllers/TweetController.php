@@ -24,17 +24,34 @@ class TweetController extends Controller
 
     public function allTweets()
     {
-        if ($this->getUrl() == ['tweet', 'allTweets']) {
-            $this->notFound();
-        }
+        $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
+
         $this->loadModel('Tweet');
         $tweet = new Tweet();
+        $tweets = $tweet->getAllTweets();
+        
+        return $this->getTweetsArray($tweets);
+    }
+
+    public function tweetsByUser($user_id)
+    {
+        $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
+
+        $this->loadModel('Tweet');
+        $tweet = new Tweet();
+        $tweets = $tweet->getAllTweetsByUser($user_id);
+        
+        return $this->getTweetsArray($tweets);
+    }
+
+    private function getTweetsArray($tweets)
+    {
         $this->loadModel('User');
         $user = new User();
-        $tweets = $tweet->getAllTweets();
         $tweets_array = array();
         foreach ($tweets as $tweet) {
             $user_data = $user->getUserById($tweet['user_id']);
+
             $single_tweet = array();
             $single_tweet['id'] = $tweet['id'];
             $single_tweet['user_id'] = $tweet['user_id'];

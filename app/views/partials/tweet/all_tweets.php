@@ -8,5 +8,5 @@
         <?php endforeach; ?>
     </div>
 <?php else : ?>
-    <div class="empty-tweets-container">Todavia no existen tweeets!</div>
+    <div class="empty-tweets-container">Aun no hay tweets.</div>
 <?php endif; ?>
