@@ -53,4 +53,12 @@ class Controller
             return [];
         }
     }
+
+    public function handleUrlAccessRestriction ($class_name, $method_name) {
+        $controller = strtolower(str_replace('Controller', '', $class_name));
+
+        if ($this->getUrl() == [$controller, $method_name]) {
+            $this->notFound();
+        }
+    }
 }
