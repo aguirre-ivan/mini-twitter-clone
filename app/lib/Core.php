@@ -17,11 +17,11 @@ class Core
             $controllerName = ucwords($url[0] ?? '') . 'Controller';
             $controllerFile = '../app/controllers/' . $controllerName . '.php';
             $methodName = $url[1] ?? 'index';
-
+            
             if (file_exists($controllerFile)) {
                 require_once $controllerFile;
                 $this->controller = new $controllerName;
-
+                
                 if (method_exists($this->controller, $methodName)) {
                     $this->method = $methodName;
                     $this->parameters = array_slice($url, 2);
@@ -32,7 +32,7 @@ class Core
                 $this->method = 'notFound';
             }
         }
-
+        
         call_user_func_array([$this->controller, $this->method], $this->parameters);
     }
 

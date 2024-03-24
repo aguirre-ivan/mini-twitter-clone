@@ -10,7 +10,7 @@ class UserController extends Controller
     public function profile()
     {
         if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/index');
+            $this->redirect('/user/login');
         } else {
             $this->loadModel('User');
             $user = new User();
