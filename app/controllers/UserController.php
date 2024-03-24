@@ -4,20 +4,30 @@ class UserController extends Controller
 {
     public function index()
     {
-        $this->profile();
-    }
+        $this->isIndexInUrl();
 
-    public function profile()
-    {
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/user/login');
         } else {
-            $this->loadModel('User');
-            $user = new User();
-            $user_data = $user->getUserById($_SESSION['user_id']);
+            $this->redirect('/user/profile/'. $_SESSION['user_id']);
+        }
+    }
+
+    public function profile($user_id = null)
+    {
+        if (!isset($_SESSION['user_id'])) {
+            $this->assertParamsAmount(1);
+        }
+        $this->loadModel('User');
+        $user = new User();
+        $user_data = $user->getUserById($user_id);
+        
+        if (!$user_data) {
+            $this->notFound();
+        } else {
             $this->loadController('TweetController');
             $tweetController = new TweetController();
-            $tweets = $tweetController->tweetsByUser($_SESSION['user_id']);
+            $tweets = $tweetController->tweetsByUser($user_id);
             $this->loadView('profile', ['title' => 'Perfil', 'user_data' => $user_data, 'tweets' => $tweets]);
         }
     }

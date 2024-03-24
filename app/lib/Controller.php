@@ -27,14 +27,7 @@ class Controller
     public function notFound()
     {
         require_once '../app/views/pages/page_not_found.php';
-    }
-
-    public function index(){
-        if ($this -> getUrl() == ['index']) {
-            $this->loadView('index');
-        } else {
-            $this -> notFound();
-        }
+        die();
     }
 
     public function redirect($location)
@@ -42,7 +35,7 @@ class Controller
         header("Location: $location");
     }
 
-    public function getUrl()
+    private function getUrl()
     {
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
@@ -58,6 +51,18 @@ class Controller
         $controller = strtolower(str_replace('Controller', '', $class_name));
 
         if ($this->getUrl() == [$controller, $method_name]) {
+            $this->notFound();
+        }
+    }
+
+    public function isIndexInUrl() {
+        if (isset($this->getUrl()[1]) and $this->getUrl()[1] == 'index') {
+            $this->notFound();
+        }
+    }
+
+    public function assertParamsAmount($amount) {
+        if (count($this->getUrl()) != $amount + 2) {
             $this->notFound();
         }
     }

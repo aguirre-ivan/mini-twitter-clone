@@ -6,7 +6,7 @@
         <div class="profile-container__username"><?= $page_data['user_data']['username'] ?></div>
         <div class="profile-container__email"><?= $page_data['user_data']['email'] ?></div>
     </div>
-    <?php require_once APP . '/views/partials/tweet/tweets_by_user.php' ?>
+    <?php require_once APP . '/views/partials/tweet/tweets.php' ?>
 </div>
 
 <?php require_once APP . '/views/partials/footer.php' ?>
