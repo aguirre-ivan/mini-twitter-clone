@@ -34,9 +34,12 @@
                 height: 400px;
             }
     
-            svg {
-                height: 100%;
-                width: 100%;
+            i {
+                font-size: 4.5em;
+
+                @media screen and (min-width: 1000px) {
+                    font-size: 20em;
+                }
             }
         }
     

@@ -45,15 +45,6 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(29, 155, 240);
 }
 
-.page-site-branding {
-  width: 60px;
-  height: 60px;
-}
-.page-site-branding svg {
-  height: 100%;
-  width: 100%;
-}
-
 .twitter-btn {
   padding: 15px;
   border-radius: 100px;
@@ -144,9 +135,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 400px;
   }
 }
-.user-not-logged-in .landing-container__site-branding svg {
-  height: 100%;
-  width: 100%;
+.user-not-logged-in .landing-container__site-branding i {
+  font-size: 4.5em;
+}
+@media screen and (min-width: 1000px) {
+  .user-not-logged-in .landing-container__site-branding i {
+    font-size: 20em;
+  }
 }
 .user-not-logged-in .landing-container__body {
   display: flex;
@@ -190,66 +185,65 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.login-page, .registration-page {
+.user-access-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-width: 600px;
   padding: 40px;
 }
-.login-page__form, .registration-page__form {
+.user-access-page__site-branding {
+  width: 60px;
+  height: 60px;
+}
+.user-access-page__site-branding i {
+  font-size: 4.5em;
+}
+.user-access-page__body {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
-.login-page__form h1, .registration-page__form h1 {
+.user-access-page__body h1 {
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
 }
-.login-page__form form, .registration-page__form form {
+.user-access-page__body .login-form, .user-access-page__body .registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.user-access-page__body .login-form form, .user-access-page__body .registration-form form {
   display: flex;
   align-items: center;
   gap: 40px;
   flex-direction: column;
   max-width: 500px;
 }
-.login-page__signup, .login-page__signin, .registration-page__signup, .registration-page__signin {
+.user-access-page .user-signup, .user-access-page .user-signin {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.login-page__signup p, .login-page__signin p, .registration-page__signup p, .registration-page__signin p {
+.user-access-page .user-signup p, .user-access-page .user-signin p {
   font-weight: bold;
   color: #fff;
 }
-.login-page__signup p a, .login-page__signin p a, .registration-page__signup p a, .registration-page__signin p a {
+.user-access-page .user-signup p a, .user-access-page .user-signin p a {
   color: rgb(29, 155, 240);
 }
-
-.login-successful-page, .registration-successful-page {
+.user-access-page .successful-action {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  max-width: 600px;
-  padding: 40px;
+  gap: 20px;
 }
-.login-successful-page__body, .registration-successful-page__body {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-.login-successful-page__body h1, .registration-successful-page__body h1 {
-  font-size: 4rem;
-  font-weight: 900;
-  color: #fff;
-}
-.login-successful-page__body p, .registration-successful-page__body p {
+.user-access-page .successful-action p {
   font-size: 1.3rem;
   font-weight: bold;
   color: #fff;
 }
-.login-successful-page__body a, .registration-successful-page__body a {
+.user-access-page .successful-action a {
   font-size: 1.3rem;
   font-weight: bold;
   color: rgb(29, 155, 240);

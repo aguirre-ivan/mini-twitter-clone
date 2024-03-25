@@ -35,7 +35,7 @@ class UserController extends Controller
     public function register()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->redirect('/user/profile');
+            $this->redirect('/user');
         } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->loadModel('User');
             $user = new User();
@@ -65,7 +65,7 @@ class UserController extends Controller
     public function login()
     {
         if (isset($_SESSION['user_id'])) {
-            $this->redirect('/user/profile');
+            $this->redirect('/user');
         } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
             $this->loadModel('User');
             $user = new User();

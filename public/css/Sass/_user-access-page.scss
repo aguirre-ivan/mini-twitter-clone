@@ -1,31 +1,46 @@
-.login-page, .registration-page {
+.user-access-page {
     display: flex;
     flex-direction: column;
     gap: 30px;
     max-width: 600px;
     padding: 40px;
+    
+    &__site-branding {
+        width: 60px;
+        height: 60px;
 
-    &__form {
+        i {
+            font-size: 4.5em;
+        }
+    }
+
+    &__body {
         display: flex;
         flex-direction: column;
-        gap: 50px;
-
+        gap: 20px;
+    
         h1 {
             font-size: 2rem;
             font-weight: bold;
             color: #fff
         }
-
-        form {
+    
+        .login-form, .registration-form {
             display: flex;
-            align-items: center;
-            gap: 40px;
             flex-direction: column;
-            max-width: 500px;
+            gap: 50px;
+    
+            form {
+                display: flex;
+                align-items: center;
+                gap: 40px;
+                flex-direction: column;
+                max-width: 500px;
+            }
         }
     }
 
-    &__signup, &__signin {
+    .user-signup, .user-signin {
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -39,25 +54,11 @@
             }
         }
     }
-}
 
-.login-successful-page, .registration-successful-page {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 600px;
-    padding: 40px;
-
-    &__body {
+    .successful-action {
         display: flex;
         flex-direction: column;
-        gap: 30px;
-
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #fff;
-        }
+        gap: 20px;
 
         p {
             font-size: 1.3rem;
