@@ -5,6 +5,7 @@
         <meta name="viewport"
             content="width=device-width, initial-scale=1.0">
         <title><?= $page_data['title'] ?></title>
+        <link rel="icon" href="/img/favicon.svg">
         <script src="https://kit.fontawesome.com/0fd078418e.js"
             crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -15,7 +16,6 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
             <link rel="stylesheet" href="/css/styles.css">
-
         <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
             integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
             crossorigin="anonymous"></script>
