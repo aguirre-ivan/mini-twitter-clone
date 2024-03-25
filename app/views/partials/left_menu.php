@@ -13,7 +13,7 @@
             </a>
         </li>
         <li>
-            <a href="/user/profile">
+            <a href="/user">
                 <i class="fa-solid fa-user">
                 </i>
                 <div class="sidebar-menu__item-text">Perfil</div>
