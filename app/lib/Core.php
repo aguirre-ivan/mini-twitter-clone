@@ -31,6 +31,7 @@ class Core
                 $this->method = 'notFound';
             }
         } else {
+            $this->controller = new Controller;
             $this->method = 'notFound';
         }
 
