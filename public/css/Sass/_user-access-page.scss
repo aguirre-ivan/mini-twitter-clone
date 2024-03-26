@@ -1,0 +1,79 @@
+.user-access-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+    padding: 40px;
+    
+    &__site-branding {
+        width: 60px;
+        height: 60px;
+
+        i {
+            font-size: 4.5em;
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: $white-color
+        }
+    
+        .login-form, .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+    
+            form {
+                display: flex;
+                align-items: center;
+                gap: 40px;
+                flex-direction: column;
+                max-width: 500px;
+
+                input {
+                    color: $dark-color;
+                }
+            }
+        }
+    }
+
+    .user-signup, .user-signin {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        p {
+            font-weight: bold;
+            color: $white-color;
+
+            a {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .successful-action {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: $white-color;
+        }
+
+        a {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: $primary-color;
+        }
+    }
+}

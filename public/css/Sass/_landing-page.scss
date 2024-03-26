@@ -34,9 +34,12 @@
                 height: 400px;
             }
     
-            svg {
-                height: 100%;
-                width: 100%;
+            i {
+                font-size: 4.5em;
+
+                @media screen and (min-width: 1000px) {
+                    font-size: 20em;
+                }
             }
         }
     
@@ -52,7 +55,7 @@
             h1 {
                 font-size: 4rem;
                 font-weight: 900;
-                color: #fff;
+                color: $white-color;
             }
             
             .register-container {
@@ -64,11 +67,11 @@
                 h3 {
                     font-size: 2rem;
                     font-weight: bold;
-                    color: #fff
+                    color: $white-color
                 }
     
                 &__terms {
-                    color: rgb(113, 118, 123);
+                    color: $secondary-color;
                     font-size: 0.7rem;
                 }
             }
@@ -82,7 +85,7 @@
                 h3 {
                     font-size: 1.5rem;
                     font-weight: bold;
-                    color: #fff
+                    color: $white-color
                 }
             }
         }

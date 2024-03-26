@@ -2,8 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   color: #fff;
 }
 
@@ -24,36 +23,6 @@ h1, h2, h3, h4, h5, h6 {
   all: unset;
 }
 
-.site-header nav {
-  gap: 15px;
-  padding: 30px;
-}
-.site-header nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-}
-.site-header nav ul li a {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-.site-header nav ul li a:hover {
-  text-decoration: underline;
-  color: rgb(29, 155, 240);
-}
-
-.page-site-branding {
-  width: 60px;
-  height: 60px;
-}
-.page-site-branding svg {
-  height: 100%;
-  width: 100%;
-}
-
 .twitter-btn {
   padding: 15px;
   border-radius: 100px;
@@ -63,20 +32,20 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 .twitter-btn.twitter-btn--lightblue {
-  background-color: rgb(29, 155, 240);
+  background-color: #1D9BF0;
   color: #fff;
 }
 .twitter-btn.twitter-btn--lightblue:hover {
-  background-color: rgb(26, 145, 220);
+  background-color: #1A91DC;
 }
 .twitter-btn.twitter-btn--dark {
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
   background-color: transparent;
-  border-color: rgb(83, 100, 113);
+  border-color: #70808d;
   border: solid 1px;
 }
 .twitter-btn.twitter-btn--dark:hover {
-  background-color: rgb(83, 100, 113);
+  background-color: #70808d;
   color: #fff;
 }
 
@@ -87,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.3rem;
   font-weight: bold;
   width: 100%;
-  border-color: rgb(51, 54, 57);
 }
 
 .alert-box {
@@ -99,10 +67,25 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .alert-box.alert-box--success {
-  background-color: rgb(29, 161, 242);
+  background-color: #1da1f2;
 }
 .alert-box.alert-box--error {
-  background-color: rgb(224, 36, 94);
+  background-color: #e0245e;
+}
+
+.sidebar-box {
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 100%;
+  color: #fff;
+}
+.sidebar-box.sidebar-box--lightblue {
+  background-color: rgb(29, 161, 242);
+}
+.sidebar-box.sidebar-box--dark {
+  background-color: #70808d;
 }
 
 .user-not-logged-in {
@@ -144,9 +127,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 400px;
   }
 }
-.user-not-logged-in .landing-container__site-branding svg {
-  height: 100%;
-  width: 100%;
+.user-not-logged-in .landing-container__site-branding i {
+  font-size: 4.5em;
+}
+@media screen and (min-width: 1000px) {
+  .user-not-logged-in .landing-container__site-branding i {
+    font-size: 20em;
+  }
 }
 .user-not-logged-in .landing-container__body {
   display: flex;
@@ -175,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .user-not-logged-in .landing-container__body .register-container__terms {
-  color: rgb(113, 118, 123);
+  color: #70808d;
   font-size: 0.7rem;
 }
 .user-not-logged-in .landing-container__body .login-container {
@@ -190,74 +177,110 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.login-page, .registration-page {
+.user-access-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
   max-width: 600px;
   padding: 40px;
 }
-.login-page__form, .registration-page__form {
+.user-access-page__site-branding {
+  width: 60px;
+  height: 60px;
+}
+.user-access-page__site-branding i {
+  font-size: 4.5em;
+}
+.user-access-page__body {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
 }
-.login-page__form h1, .registration-page__form h1 {
+.user-access-page__body h1 {
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
 }
-.login-page__form form, .registration-page__form form {
+.user-access-page__body .login-form, .user-access-page__body .registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.user-access-page__body .login-form form, .user-access-page__body .registration-form form {
   display: flex;
   align-items: center;
   gap: 40px;
   flex-direction: column;
   max-width: 500px;
 }
-.login-page__signup, .login-page__signin, .registration-page__signup, .registration-page__signin {
+.user-access-page__body .login-form form input, .user-access-page__body .registration-form form input {
+  color: #000;
+}
+.user-access-page .user-signup, .user-access-page .user-signin {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.login-page__signup p, .login-page__signin p, .registration-page__signup p, .registration-page__signin p {
+.user-access-page .user-signup p, .user-access-page .user-signin p {
   font-weight: bold;
   color: #fff;
 }
-.login-page__signup p a, .login-page__signin p a, .registration-page__signup p a, .registration-page__signin p a {
-  color: rgb(29, 155, 240);
+.user-access-page .user-signup p a, .user-access-page .user-signin p a {
+  color: #1D9BF0;
 }
-
-.login-successful-page, .registration-successful-page {
+.user-access-page .successful-action {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  max-width: 600px;
-  padding: 40px;
+  gap: 20px;
 }
-.login-successful-page__body, .registration-successful-page__body {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-.login-successful-page__body h1, .registration-successful-page__body h1 {
-  font-size: 4rem;
-  font-weight: 900;
-  color: #fff;
-}
-.login-successful-page__body p, .registration-successful-page__body p {
+.user-access-page .successful-action p {
   font-size: 1.3rem;
   font-weight: bold;
   color: #fff;
 }
-.login-successful-page__body a, .registration-successful-page__body a {
+.user-access-page .successful-action a {
   font-size: 1.3rem;
   font-weight: bold;
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
 }
 
-.profile-page-container,
-.feed-page-container {
-  max-width: 700px;
+.user-logged-in-page {
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 0.7fr;
+  max-width: 1200px;
+}
+.user-logged-in-page__main-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.user-logged-in-page__sidebar-first .sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a {
+  padding: 10px 20px;
+  display: flex;
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a:hover .link-wrapper {
+  background-color: rgba(238, 233, 234, 0.1294117647);
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper {
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper i {
+  width: 15px;
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper div {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-top: 1px;
 }
 
 .profile-container {
@@ -307,6 +330,11 @@ h1, h2, h3, h4, h5, h6 {
   border: solid 0.5px gray;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+.tweets-container::-webkit-scrollbar {
+  display: none;
 }
 .tweets-container .tweet {
   border-bottom: solid 0.5px gray;
@@ -325,6 +353,9 @@ h1, h2, h3, h4, h5, h6 {
 .tweets-container .tweet__username::before {
   content: "@";
 }
+.tweets-container .tweet__body {
+  word-wrap: break-word;
+}
 
 footer {
   background-color: black;
@@ -332,6 +363,7 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
   padding: 15px;
   gap: 15px;
 }
@@ -349,7 +381,7 @@ footer ul i {
   transition: all 0.3s ease-in-out;
 }
 footer ul i:hover {
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
   transform: scale(1.2);
   transition: all 0.3s ease-in-out;
 }
@@ -358,7 +390,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: rgb(21, 32, 43);
+  align-items: center;
+  background-color: #15202b;
 }
 body > div {
   flex-grow: 1;
