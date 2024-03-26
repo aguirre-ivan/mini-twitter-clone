@@ -36,4 +36,13 @@ class User {
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }
+
+    public function getAllUsers($limit = null) {
+        $sql = "SELECT * FROM users";
+        if ($limit) {
+            $sql .= " LIMIT $limit";
+        }
+        $stmt = $this->pdo->query($sql . " ORDER BY id DESC");
+        return $stmt->fetchAll();
+    }
 }

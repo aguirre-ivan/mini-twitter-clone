@@ -98,4 +98,12 @@ class UserController extends Controller
         session_destroy();
         $this->redirect('/index');
     }
+
+    public function explore()
+    {
+        $this->loadModel('User');
+        $user = new User();
+        $users = $user->getAllUsers();
+        $this->loadView('explore', ['title' => 'Explorar', 'users' => $users]);
+    }
 }
