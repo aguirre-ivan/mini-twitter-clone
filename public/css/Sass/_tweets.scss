@@ -51,6 +51,12 @@
     border: solid 0.5px gray;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+    max-height: 70vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     .tweet {
         border-bottom: solid 0.5px gray;

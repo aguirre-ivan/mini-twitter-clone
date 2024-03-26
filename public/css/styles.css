@@ -330,6 +330,11 @@ h1, h2, h3, h4, h5, h6 {
   border: solid 0.5px gray;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+.tweets-container::-webkit-scrollbar {
+  display: none;
 }
 .tweets-container .tweet {
   border-bottom: solid 0.5px gray;
