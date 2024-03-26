@@ -1,3 +1,4 @@
+@import "./Sass/variables";
 @import "./Sass/normalize";
 @import "./Sass/generics";
 @import "./Sass/landing-page";
@@ -11,7 +12,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: rgb(21, 32, 43);
+    align-items: center;
+    background-color: $background-color;
 
     & > div {
         flex-grow: 1;

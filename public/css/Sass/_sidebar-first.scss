@@ -3,15 +3,32 @@
         display: flex;
         flex-direction: column;
         padding-left: 0;
-
+        
         li a {
+            padding: 10px 20px;
             display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
 
-            i {
-                width: 15px;
+            &:hover .link-wrapper {
+                background-color: $secondary-color--hover;
+            }
+            
+            .link-wrapper {
+                border-radius: 30px;
+                padding: 10px 20px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+
+                i {
+                    width: 15px;
+                }
+    
+                div {
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    padding-top: 1px;
+                }
             }
         }
     }

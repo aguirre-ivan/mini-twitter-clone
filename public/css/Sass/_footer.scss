@@ -4,6 +4,7 @@ footer {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
     padding: 15px;
     gap: 15px;
 
@@ -22,7 +23,7 @@ footer {
             transition: all 0.3s ease-in-out;
 
             &:hover {
-                color: rgb(29, 155, 240);
+                color: $primary-color;
                 transform: scale(1.2);
                 transition: all 0.3s ease-in-out;
             }

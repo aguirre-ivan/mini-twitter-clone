@@ -2,8 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   color: #fff;
 }
 
@@ -33,20 +32,20 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 .twitter-btn.twitter-btn--lightblue {
-  background-color: rgb(29, 155, 240);
+  background-color: #1D9BF0;
   color: #fff;
 }
 .twitter-btn.twitter-btn--lightblue:hover {
-  background-color: rgb(26, 145, 220);
+  background-color: #1A91DC;
 }
 .twitter-btn.twitter-btn--dark {
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
   background-color: transparent;
-  border-color: rgb(83, 100, 113);
+  border-color: #70808d;
   border: solid 1px;
 }
 .twitter-btn.twitter-btn--dark:hover {
-  background-color: rgb(83, 100, 113);
+  background-color: #70808d;
   color: #fff;
 }
 
@@ -57,7 +56,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.3rem;
   font-weight: bold;
   width: 100%;
-  border-color: rgb(51, 54, 57);
 }
 
 .alert-box {
@@ -69,10 +67,25 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .alert-box.alert-box--success {
-  background-color: rgb(29, 161, 242);
+  background-color: #1da1f2;
 }
 .alert-box.alert-box--error {
-  background-color: rgb(224, 36, 94);
+  background-color: #e0245e;
+}
+
+.sidebar-box {
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 100%;
+  color: #fff;
+}
+.sidebar-box.sidebar-box--lightblue {
+  background-color: rgb(29, 161, 242);
+}
+.sidebar-box.sidebar-box--dark {
+  background-color: #70808d;
 }
 
 .user-not-logged-in {
@@ -149,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .user-not-logged-in .landing-container__body .register-container__terms {
-  color: rgb(113, 118, 123);
+  color: #70808d;
   font-size: 0.7rem;
 }
 .user-not-logged-in .landing-container__body .login-container {
@@ -200,6 +213,9 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   max-width: 500px;
 }
+.user-access-page__body .login-form form input, .user-access-page__body .registration-form form input {
+  color: #000;
+}
 .user-access-page .user-signup, .user-access-page .user-signin {
   display: flex;
   flex-direction: column;
@@ -210,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 .user-access-page .user-signup p a, .user-access-page .user-signin p a {
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
 }
 .user-access-page .successful-action {
   display: flex;
@@ -225,12 +241,18 @@ h1, h2, h3, h4, h5, h6 {
 .user-access-page .successful-action a {
   font-size: 1.3rem;
   font-weight: bold;
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
 }
 
 .user-logged-in-page {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 0.7fr 2fr 0.7fr;
+  max-width: 1200px;
+}
+.user-logged-in-page__main-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .user-logged-in-page__sidebar-first .sidebar-menu {
@@ -239,18 +261,26 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0;
 }
 .user-logged-in-page__sidebar-first .sidebar-menu li a {
+  padding: 10px 20px;
+  display: flex;
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a:hover .link-wrapper {
+  background-color: rgba(238, 233, 234, 0.1294117647);
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper {
+  border-radius: 30px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 15px;
 }
-.user-logged-in-page__sidebar-first .sidebar-menu li a i {
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper i {
   width: 15px;
 }
-
-.profile-page-container,
-.feed-page-container {
-  max-width: 700px;
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper div {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-top: 1px;
 }
 
 .profile-container {
@@ -318,6 +348,9 @@ h1, h2, h3, h4, h5, h6 {
 .tweets-container .tweet__username::before {
   content: "@";
 }
+.tweets-container .tweet__body {
+  word-wrap: break-word;
+}
 
 footer {
   background-color: black;
@@ -325,6 +358,7 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
   padding: 15px;
   gap: 15px;
 }
@@ -342,7 +376,7 @@ footer ul i {
   transition: all 0.3s ease-in-out;
 }
 footer ul i:hover {
-  color: rgb(29, 155, 240);
+  color: #1D9BF0;
   transform: scale(1.2);
   transition: all 0.3s ease-in-out;
 }
@@ -351,7 +385,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: rgb(21, 32, 43);
+  align-items: center;
+  background-color: #15202b;
 }
 body > div {
   flex-grow: 1;
