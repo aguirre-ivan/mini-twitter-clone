@@ -1,4 +1,13 @@
-
 <?php require_once APP . '/views/partials/head.php' ?>
-<?php require_once APP . '/views/partials/user/explore.php' ?>
+
+<div class="user-logged-in-page feed-page">
+    <div class="user-logged-in-page__sidebar-first">
+        <?php require_once APP . '/views/partials/left_menu.php' ?>
+    </div>
+    <div class="user-logged-in-page__main-container">
+        <h1>Conectar</h1>
+        <?php require_once APP . '/views/partials/user/explore.php' ?>
+    </div>
+</div>
+
 <?php require_once APP . '/views/partials/footer.php' ?>
