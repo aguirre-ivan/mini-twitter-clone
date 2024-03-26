@@ -22,6 +22,6 @@ CREATE TABLE follows (
     id INT AUTO_INCREMENT PRIMARY KEY,
     follower_id INT NOT NULL,
     followed_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (follow_id) REFERENCES users(id)
+    FOREIGN KEY (follower_id) REFERENCES users(id),
+    FOREIGN KEY (followed_id) REFERENCES users(id)
 );
