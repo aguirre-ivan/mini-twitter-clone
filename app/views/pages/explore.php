@@ -1,8 +1,8 @@
 <?php if (!empty($page_data['users'])) : ?>
     <div class="users-container">
-        <?php foreach ($page_data['users'] as $tweet) : ?>
+        <?php foreach ($page_data['users'] as $user) : ?>
             <div class="user">
-                <a href="/user/profile/<?= $username['user_id'] ?>" class="user__username"><?= $tweet['username'] ?></a>
+                <a href="/user/profile/<?= $user['id'] ?>" class="user__username"><?= $user['username'] ?></a>
             </div>
         <?php endforeach; ?>
     </div>
