@@ -26,7 +26,7 @@ class UserController extends Controller
             $tweetController = new TweetController();
             $tweets = $tweetController->tweetsByUser($user_id);
             
-            if (isset($followMethod)) {
+            if (isset($followMethod) && ($_SESSION['user_id'] != $user_id)) {
                 $this->assertParamsAmount(2);
 
                 $this->loadController('FollowController');
