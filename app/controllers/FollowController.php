@@ -42,7 +42,8 @@ class FollowController extends Controller
         $this->loadModel('Follow');
         $follow = new Follow();
         $followers = $follow->getFollowers($this->user);
-        $this->loadView('followers', ['title' => 'Seguidores de ' . $this->userLoggedData['username'], 'followers' => $followers]);
+        $user_data = $this->loadUserHeader();
+        $this->loadView('followers', ['title' => 'Seguidores de ' . $this->userLoggedData['username'], 'users' => $followers, 'user_data' => $user_data]);
     }
 
     public function following()
@@ -50,6 +51,14 @@ class FollowController extends Controller
         $this->loadModel('Follow');
         $follow = new Follow();
         $following = $follow->getFollowing($this->user);
-        $this->loadView('following', ['title' => 'Seguindo ' . $this->userLoggedData['username'], 'following' => $following]);
+        $user_data = $this->loadUserHeader();
+        $this->loadView('following', ['title' => 'Personas que sigue ' . $this->userLoggedData['username'], 'following' => $following, 'user_data' => $user_data]);
+    }
+
+    private function loadUserHeader()
+    {
+        $this->loadModel('User');
+        $user = new User();
+        return $user->getUserById($this->user);
     }
 }

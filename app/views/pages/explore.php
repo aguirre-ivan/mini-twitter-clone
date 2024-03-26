@@ -6,7 +6,7 @@
     </div>
     <div class="user-logged-in-page__main-container">
         <h1>Conectar</h1>
-        <?php require_once APP . '/views/partials/user/explore.php' ?>
+        <?php require_once APP . '/views/partials/users/users_container.php' ?>
     </div>
 </div>
 
