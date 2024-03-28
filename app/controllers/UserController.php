@@ -18,6 +18,7 @@ class UserController extends Controller
         $this->loadModel('User');
         $user = new User();
         $user_data = $user->getUserById($user_id);
+        $profile_button = $this->getButtonProfile($user_id);
 
         if (!$user_data) {
             $this->notFound();
@@ -41,7 +42,7 @@ class UserController extends Controller
 
                 $followController->$followMethod();
             } else {
-                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets]);
+                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets, 'profile_button' => $profile_button]);
             }
         }
     }
@@ -156,5 +157,20 @@ class UserController extends Controller
         $followController = new FollowController();
         $followController->setUser($user_id);
         $users = $followController->notFollowing($user_id);
+    }
+
+    private function getButtonProfile($user_id)
+    {
+        $this->loadModel('Follow');
+        $follow = new Follow();
+        $isFollowing = $follow->isFollowing($_SESSION['user_id'], $user_id);
+
+        if ($isFollowing) {
+            return array('text' => 'Dejar de seguir', 'method' => 'unfollow');
+        } elseif ($_SESSION['user_id'] == $user_id) {
+            return array('text' => 'Editar perfil', 'method' => 'edit');
+        }
+
+        return array('text' => 'Seguir', 'method' => 'follow');
     }
 }
