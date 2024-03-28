@@ -44,6 +44,17 @@ class TweetController extends Controller
         return $this->getTweetsArray($tweets);
     }
 
+    public function followingTweets($user_id)
+    {
+        $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
+
+        $this->loadModel('Tweet');
+        $tweet = new Tweet();
+        $tweets = $tweet->getFollowingTweets($user_id);
+
+        return $this->getTweetsArray($tweets);
+    }
+
     private function getTweetsArray($tweets)
     {
         $this->loadModel('User');

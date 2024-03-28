@@ -25,4 +25,10 @@ class Tweet {
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
     }
+
+    public function getFollowingTweets($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM tweets WHERE user_id IN (SELECT followed_id FROM follows WHERE follower_id = :user_id) ORDER BY created_at DESC");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll();
+    }
 }
