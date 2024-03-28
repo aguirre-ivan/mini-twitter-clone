@@ -70,3 +70,15 @@
         background-color: $secondary-color;
     }
 }
+
+.default-icon {
+    font-size: 1.7rem;
+    color: white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: $primary-color;
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+}

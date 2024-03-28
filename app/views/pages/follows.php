@@ -8,6 +8,9 @@
         <?php require_once APP . '/views/partials/user/profile_container.php' ?>
         <?php require_once APP . '/views/partials/user/users_container.php' ?>
     </div>
+    <div class="user-logged-in-page__sidebar-first">
+        <?php require_once APP . '/views/partials/project_info.php' ?>
+    </div>
 </div>
 
 <?php require_once APP . '/views/partials/footer.php' ?>

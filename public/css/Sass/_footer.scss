@@ -16,17 +16,5 @@ footer {
     ul {
         display: flex;
         gap: 15px;
-
-        i {
-            font-size: 1.7rem;
-            color: white;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                color: $primary-color;
-                transform: scale(1.2);
-                transition: all 0.3s ease-in-out;
-            }
-        }
     }
 }

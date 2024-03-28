@@ -88,6 +88,17 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #70808d;
 }
 
+.default-icon {
+  font-size: 1.7rem;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+.default-icon:hover {
+  color: #1D9BF0;
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
 .user-not-logged-in {
   display: flex;
   align-items: center;
@@ -374,16 +385,6 @@ footer p {
 footer ul {
   display: flex;
   gap: 15px;
-}
-footer ul i {
-  font-size: 1.7rem;
-  color: white;
-  transition: all 0.3s ease-in-out;
-}
-footer ul i:hover {
-  color: #1D9BF0;
-  transform: scale(1.2);
-  transition: all 0.3s ease-in-out;
 }
 
 body {

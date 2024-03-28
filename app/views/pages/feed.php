@@ -8,6 +8,9 @@
         <?php require_once APP . '/views/partials/tweet/add_form.php' ?>
         <?php require_once APP . '/views/partials/tweet/tweets.php' ?>
     </div>
+    <div class="user-logged-in-page__sidebar-first">
+        <?php require_once APP . '/views/partials/project_info.php' ?>
+    </div>
 </div>
 
 <?php require_once APP . '/views/partials/footer.php' ?>
