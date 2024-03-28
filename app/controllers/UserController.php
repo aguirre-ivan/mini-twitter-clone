@@ -9,26 +9,40 @@ class UserController extends Controller
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('/user/login');
         } else {
-            $this->redirect('/user/profile/'. $_SESSION['user_id']);
+            $this->redirect('/user/profile/' . $_SESSION['user_id']);
         }
     }
 
-    public function profile($user_id = null)
+    public function profile($user_id = null, $followMethod = null)
     {
-        if (!isset($_SESSION['user_id'])) {
-            $this->assertParamsAmount(1);
-        }
         $this->loadModel('User');
         $user = new User();
         $user_data = $user->getUserById($user_id);
-        
+
         if (!$user_data) {
             $this->notFound();
         } else {
             $this->loadController('TweetController');
             $tweetController = new TweetController();
             $tweets = $tweetController->tweetsByUser($user_id);
-            $this->loadView('profile', ['title' => 'Perfil', 'user_data' => $user_data, 'tweets' => $tweets]);
+
+            if (isset($followMethod)) {
+                $this->assertParamsAmount(2);
+
+                $this->loadController('FollowController');
+                $followController = new FollowController();
+                $followController->setUser($user_id);
+                $followController->setUserLogged($_SESSION['user_id']);
+                $followController->setUserLoggedData($user->getUserById($_SESSION['user_id']));
+
+                if (!method_exists($followController, $followMethod)) {
+                    $this->notFound();
+                }
+
+                $followController->$followMethod();
+            } else {
+                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets]);
+            }
         }
     }
 
@@ -44,7 +58,7 @@ class UserController extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $validation = register_validation($username, $email, $password);
+            $validation = $this->registerValidation($username, $email, $password);
 
             if (!empty($validation)) {
                 $registration_errors = $validation;
@@ -62,6 +76,27 @@ class UserController extends Controller
         }
     }
 
+    private function registerValidation($username, $email, $password)
+    {
+        $errors = array();
+
+        if (empty($username)) {
+            array_push($errors, 'El nombre de usuario es obligatorio');
+        }
+
+        if (empty($email)) {
+            array_push($errors, 'El correo electrónico es obligatorio');
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            array_push($errors, 'El correo electrónico no es válido');
+        }
+
+        if (empty($password)) {
+            array_push($errors, 'La contraseña es obligatoria');
+        }
+
+        return $errors;
+    }
+
     public function login()
     {
         if (isset($_SESSION['user_id'])) {
@@ -73,7 +108,7 @@ class UserController extends Controller
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            $validation = login_validation($username, $password);
+            $validation = $this->loginValidation($username, $password);
 
             if (!empty($validation)) {
                 $login_errors = $validation;
@@ -93,6 +128,21 @@ class UserController extends Controller
         }
     }
 
+    private function loginValidation($username, $password)
+    {
+        $errors = array();
+
+        if (empty($username)) {
+            array_push($errors, 'El nombre de usuario es obligatorio');
+        }
+
+        if (empty($password)) {
+            array_push($errors, 'La contraseña es obligatoria');
+        }
+
+        return $errors;
+    }
+
     public function logout()
     {
         session_destroy();
@@ -101,9 +151,10 @@ class UserController extends Controller
 
     public function explore()
     {
-        $this->loadModel('User');
-        $user = new User();
-        $users = $user->getAllUsers();
-        $this->loadView('explore', ['title' => 'Explorar', 'users' => $users]);
+        $user_id = $_SESSION['user_id'];
+        $this->loadController('FollowController');
+        $followController = new FollowController();
+        $followController->setUser($user_id);
+        $users = $followController->notFollowing($user_id);
     }
 }

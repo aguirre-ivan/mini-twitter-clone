@@ -17,3 +17,11 @@ CREATE TABLE tweets (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE follows (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    follower_id INT NOT NULL,
+    followed_id INT NOT NULL,
+    FOREIGN KEY (follower_id) REFERENCES users(id),
+    FOREIGN KEY (followed_id) REFERENCES users(id)
+);
