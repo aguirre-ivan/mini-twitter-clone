@@ -4,7 +4,7 @@
             <a href="/index">
                 <div class="link-wrapper">
                     <i class="fa-solid fa-house"></i>
-                    <div class="sidebar-menu__item-text">Home</div>
+                    <div class="sidebar-menu__item-text">Inicio</div>
                 </div>
             </a>
         </li>
