@@ -30,14 +30,32 @@ class Follow {
     }
 
     public function getFollowers($userId) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users JOIN follows ON users.id = follows.follower_id WHERE follows.followed_id = :user_id");
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id IN (SELECT follower_id FROM follows WHERE followed_id = :user_id)");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
     }
 
     public function getFollowing($userId) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users JOIN follows ON users.id = follows.followed_id WHERE follows.follower_id = :user_id");
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id IN (SELECT followed_id FROM follows WHERE follower_id = :user_id)");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
+    }
+
+    public function getNotFollowing($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id NOT IN (SELECT followed_id FROM follows WHERE follower_id = :user_id) AND id != :user_id;");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll();
+    }
+
+    public function getFollowersCount($userId) {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM follows WHERE followed_id = :user_id");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchColumn();
+    }
+
+    public function getFollowingCount($userId) {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM follows WHERE follower_id = :user_id");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchColumn();
     }
 }

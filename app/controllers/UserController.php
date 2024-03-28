@@ -25,8 +25,8 @@ class UserController extends Controller
             $this->loadController('TweetController');
             $tweetController = new TweetController();
             $tweets = $tweetController->tweetsByUser($user_id);
-            
-            if (isset($followMethod) && ($_SESSION['user_id'] != $user_id)) {
+
+            if (isset($followMethod)) {
                 $this->assertParamsAmount(2);
 
                 $this->loadController('FollowController');
@@ -34,14 +34,14 @@ class UserController extends Controller
                 $followController->setUser($user_id);
                 $followController->setUserLogged($_SESSION['user_id']);
                 $followController->setUserLoggedData($user->getUserById($_SESSION['user_id']));
-                
+
                 if (!method_exists($followController, $followMethod)) {
                     $this->notFound();
                 }
-                
+
                 $followController->$followMethod();
             } else {
-                $this->loadView('profile', ['title' => '@'. $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets]);
+                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets]);
             }
         }
     }
@@ -151,9 +151,10 @@ class UserController extends Controller
 
     public function explore()
     {
-        $this->loadModel('User');
-        $user = new User();
-        $users = $user->getAllUsers();
-        $this->loadView('explore', ['title' => 'Explorar', 'users' => $users]);
+        $user_id = $_SESSION['user_id'];
+        $this->loadController('FollowController');
+        $followController = new FollowController();
+        $followController->setUser($user_id);
+        $users = $followController->notFollowing($user_id);
     }
 }
