@@ -129,6 +129,10 @@ class UserController extends Controller
         }
     }
 
+    public function edit() {
+        $this->loadView('edit_profile', ['title' => 'Editar perfil']);
+    }
+
     private function loginValidation($username, $password)
     {
         $errors = array();
@@ -166,11 +170,11 @@ class UserController extends Controller
         $isFollowing = $follow->isFollowing($_SESSION['user_id'], $user_id);
 
         if ($isFollowing) {
-            return array('text' => 'Dejar de seguir', 'method' => 'unfollow');
+            return array('text' => 'Dejar de seguir', 'link' => '/user/profile/' . $user_id . 'unfollow');
         } elseif ($_SESSION['user_id'] == $user_id) {
-            return array('text' => 'Editar perfil', 'method' => 'edit');
+            return array('text' => 'Editar perfil', 'link' => '/user/edit');
         }
 
-        return array('text' => 'Seguir', 'method' => 'follow');
+        return array('text' => 'Seguir', 'link' => '/user/profile/' . $user_id . 'follow');
     }
 }
