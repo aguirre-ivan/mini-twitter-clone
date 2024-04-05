@@ -170,11 +170,11 @@ class UserController extends Controller
         $isFollowing = $follow->isFollowing($_SESSION['user_id'], $user_id);
 
         if ($isFollowing) {
-            return array('text' => 'Dejar de seguir', 'link' => '/user/profile/' . $user_id . 'unfollow');
+            return array('text' => 'Dejar de seguir', 'link' => '/user/profile/' . $user_id . '/unfollow');
         } elseif ($_SESSION['user_id'] == $user_id) {
             return array('text' => 'Editar perfil', 'link' => '/user/edit');
         }
 
-        return array('text' => 'Seguir', 'link' => '/user/profile/' . $user_id . 'follow');
+        return array('text' => 'Seguir', 'link' => '/user/profile/' . $user_id . '/follow');
     }
 }
