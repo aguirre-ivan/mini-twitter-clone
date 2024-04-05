@@ -2,16 +2,20 @@
 
 class IndexController extends Controller
 {
-    public function index($params = [])
+    public function index()
     {
         $this->isIndexInUrl();
-        $this->redirect('/index/feed');
+        if (!isset($_SESSION['user_id'])) {
+            $this->loadView('index', ['title' => 'Twitter']);
+        } else {
+            $this->redirect('/index/feed');
+        }
     }
 
     public function feed()
     {
         if (!isset($_SESSION['user_id'])) {
-            $this->redirect('index');
+            $this->redirect('/index');
         } else {
             $this->loadModel('Tweet');
             $tweet = new Tweet();
