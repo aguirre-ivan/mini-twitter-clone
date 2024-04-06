@@ -33,7 +33,6 @@
                     <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
                 </div>
 
-
                 <button class="twitter-btn twitter-btn--lightblue" type="submit">Guardar</button>
             </form>
         </div>

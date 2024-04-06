@@ -7,10 +7,10 @@ class User {
         $this->pdo = $database->getPdo();
     }
 
-    public function createUser($username, $email, $password) {
+    public function createUser($name, $username, $email, $password) {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
-        $stmt->execute(['username' => $username, 'email' => $email, 'password' => $password]);
+        $stmt = $this->pdo->prepare("INSERT INTO users (name, username, email, password) VALUES (:name, :username, :email, :password)");
+        $stmt->execute(['name' => $name, 'username' => $username, 'email' => $email, 'password' => $password]);
         return $this->pdo->lastInsertId();
     }
 

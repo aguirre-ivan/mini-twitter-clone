@@ -19,6 +19,7 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <input class="twitter-sign-input" type="text" name="name" placeholder="Nombre">
                 <input class="twitter-sign-input" type="text" name="username" placeholder="Nombre de usuario">
                 <input class="twitter-sign-input" type="email" name="email" placeholder="Correo electrónico">
                 <input class="twitter-sign-input" type="password" name="password" placeholder="Contraseña">

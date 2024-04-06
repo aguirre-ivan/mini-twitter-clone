@@ -55,11 +55,12 @@ class UserController extends Controller
             $this->loadModel('User');
             $user = new User();
 
+            $name = $_POST['name'];
             $username = $_POST['username'];
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $validation = $this->registerValidation($username, $email, $password);
+            $validation = $this->registerValidation($name, $username, $email, $password);
 
             if (!empty($validation)) {
                 $registration_errors = $validation;
@@ -69,7 +70,7 @@ class UserController extends Controller
                 $registration_errors = array($error);
                 $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
             } else {
-                $user->createUser($username, $email, $password);
+                $user->createUser($name, $username, $email, $password);
                 $this->loadView('register_successful', ['title' => 'Registro existoso']);
             }
         } else {
@@ -77,9 +78,13 @@ class UserController extends Controller
         }
     }
 
-    private function registerValidation($username, $email, $password)
+    private function registerValidation($name, $username, $email, $password)
     {
         $errors = array();
+
+        if (empty($name)) {
+            array_push($errors, 'El nombre es obligatorio');
+        }
 
         if (empty($username)) {
             array_push($errors, 'El nombre de usuario es obligatorio');
@@ -131,6 +136,7 @@ class UserController extends Controller
 
     public function edit() {
         $this->loadView('edit_profile', ['title' => 'Editar perfil']);
+
     }
 
     private function loginValidation($username, $password)
