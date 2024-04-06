@@ -42,7 +42,9 @@ class UserController extends Controller
 
                 $followController->$followMethod();
             } else {
-                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets, 'profile_button' => $profile_button]);
+                $page_title = $user_data['name'] . ' (@' . $user_data['username'] . ') / Twitter';
+
+                $this->loadView('profile', ['title' => $page_title, 'user_data' => $user_data, 'tweets' => $tweets, 'profile_button' => $profile_button]);
             }
         }
     }

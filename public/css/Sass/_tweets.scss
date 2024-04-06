@@ -5,18 +5,18 @@
     padding: 20px 35px;
     border: 0.5px solid gray;
 
-    &__username {
-        font-size: 3rem;
+    &__name {
+        font-size: 2rem;
         font-weight: bold;
+    }
+    
+    &__username {
+        color: #8b98a5;
+        font-size: 1.5rem;
 
         &::before {
             content: '@';
         }
-    }
-
-    &__email {
-        color: #8b98a5;
-        font-size: 1.5rem;
     }
 }
 
