@@ -30,7 +30,7 @@ class TweetController extends Controller
         $tweet = new Tweet();
         $tweets = $tweet->getAllTweets();
         
-        return $this->getTweetsArray($tweets);
+        return $tweets;
     }
 
     public function tweetsByUser($user_id)
@@ -41,7 +41,7 @@ class TweetController extends Controller
         $tweet = new Tweet();
         $tweets = $tweet->getAllTweetsByUser($user_id);
         
-        return $this->getTweetsArray($tweets);
+        return $tweets;
     }
 
     public function followingTweets($user_id)
@@ -52,25 +52,6 @@ class TweetController extends Controller
         $tweet = new Tweet();
         $tweets = $tweet->getFollowingTweets($user_id);
 
-        return $this->getTweetsArray($tweets);
-    }
-
-    private function getTweetsArray($tweets)
-    {
-        $this->loadModel('User');
-        $user = new User();
-        $tweets_array = array();
-        foreach ($tweets as $tweet) {
-            $user_data = $user->getUserById($tweet['user_id']);
-
-            $single_tweet = array();
-            $single_tweet['id'] = $tweet['id'];
-            $single_tweet['user_id'] = $tweet['user_id'];
-            $single_tweet['username'] = $user_data['username'];
-            $single_tweet['tweet'] = $tweet['tweet'];
-            array_push($tweets_array, $single_tweet);
-        }
-
-        return $tweets_array;
+        return $tweets;
     }
 }
