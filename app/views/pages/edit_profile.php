@@ -10,27 +10,27 @@
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="edit-profile-form__item-container">
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name">
+                    <input type="text" id="name" value="<?= $page_data['user_data']['name'] ?>" name="name">
                 </div>
 
                 <div class="edit-profile-form__item-container">
                     <label for="location">Ubicación</label>
-                    <input type="text" id="location" name="location">
+                    <input type="text" id="location" value="<?= $page_data['user_data']['location'] ?>" name="location">
                 </div>
 
                 <div class="edit-profile-form__item-container">
-                    <label for="header_image">Foto de portada</label>
-                    <input type="file" id="header_image" name="header_image">
+                    <label for="headerImage">Foto de portada</label>
+                    <input type="file" id="headerImage" name="headerImage">
                 </div>
 
                 <div class="edit-profile-form__item-container">
-                    <label for="profile_image">Foto de Perfil</label>
-                    <input type="file" id="profile_image" name="profile_image">
+                    <label for="profileImage">Foto de Perfil</label>
+                    <input type="file" id="profileImage" name="profileImage">
                 </div>
 
                 <div class="edit-profile-form__item-container">
                     <label for="bio">Biografía</label>
-                    <textarea id="bio" name="bio" rows="4" cols="50"></textarea>
+                    <textarea id="bio" name="bio" rows="4" cols="50"><?= $page_data['user_data']['bio'] ?></textarea>
                 </div>
 
                 <button class="twitter-btn twitter-btn--lightblue" type="submit">Guardar</button>

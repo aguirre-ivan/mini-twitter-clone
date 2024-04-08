@@ -32,7 +32,7 @@ class User {
     }
 
     public function getUserById($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM users LEFT JOIN users_info ON users.id = users_info.user_id WHERE users.id = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }
@@ -44,5 +44,23 @@ class User {
         }
         $stmt = $this->pdo->query($sql . " ORDER BY id DESC");
         return $stmt->fetchAll();
+    }
+
+    public function editUser($id, $name, $location, $bio, $headerImage, $profileImage) {
+        $stmt = $this->pdo->prepare("UPDATE users SET name = :name WHERE id = :id");
+        $stmt->execute(['name' => $name, 'id' => $id]);
+
+        $stmt = $this->pdo->prepare("UPDATE users_info SET location = :location, bio = :bio WHERE user_id = :id");
+        $stmt->execute(['location' => $location, 'bio' => $bio, 'id' => $id]);
+
+        if ($headerImage) {
+            $stmt = $this->pdo->prepare("UPDATE users_info SET header_image = :headerImage WHERE user_id = :id");
+            $stmt->execute(['headerImage' => $headerImage, 'id' => $id]);
+        }
+
+        if ($profileImage) {
+            $stmt = $this->pdo->prepare("UPDATE users_info SET profile_image = :profileImage WHERE user_id = :id");
+            $stmt->execute(['profileImage' => $profileImage, 'id' => $id]);
+        }
     }
 }

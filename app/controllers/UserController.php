@@ -137,9 +137,78 @@ class UserController extends Controller
     }
 
     public function edit() {
-        $this->loadView('edit_profile', ['title' => 'Editar perfil']);
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/user/login');
+        } else {
+            $this->loadModel('User');
+            $user = new User();
+            $user_id = $_SESSION['user_id'];
+            $user_data = $user->getUserById($user_id);
+            $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data]);
 
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $name = $_POST['name'];
+                $location = $_POST['location'];
+                $bio = $_POST['bio'];
+
+                $errors = array();
+                
+                if (empty($name)) {
+                    array_push($errors, 'El nombre es obligatorio');
+                }
+
+                $profile_image = $_FILES['profileImage'];
+                $header_image = $_FILES['headerImage'];
+                
+                $images_validation = array_unique(array_merge($this->validateImage($profile_image), $this->validateImage($header_image)));
+                
+                $errors = array_merge($errors, $images_validation);
+                
+                $profile_image_upload = $this->uploadImage($profile_image);
+                $header_image_upload = $this->uploadImage($header_image);
+
+                if (!$profile_image_upload && !$header_image_upload) {
+                    array_push($errors, 'Error en la carga de imagenes');
+                }
+
+                if (empty($errors)) {
+                    $user->editUser($user_id, $name, $location, $bio, $profile_image_upload, $header_image_upload);
+                    $this->redirect('/user/profile');
+                } else {
+                    $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array_merge($errors, $images_validation)]);
+                }
+            }
+        }
     }
+
+    private function validateImage($image)
+    {
+        $errors = array();
+
+        $allowed_types = array('image/jpeg', 'image/png', 'image/gif');
+        $max_size = MAX_UPLOAD_SIZE_MB * 1024 * 1024;
+
+        if ($image['size'] > $max_size) {
+            array_push($errors, 'Las  no pueden pesar mas de ' . MAX_UPLOAD_SIZE_MB . 'MB');
+        }
+
+        if (!in_array($image['type'], $allowed_types)) {
+            array_push($errors, 'Solo se permiten imagenes en formato JPG, PNG o GIF');
+        }
+
+        return $errors;
+    }
+
+    private function uploadImage($image) {
+        $image_name = uniqid() . $image['name'];
+        if (move_uploaded_file($image['tmp_name'], UPLOAD_IMG_DIRECTORY . $image_name)) {
+            dd(UPLOAD_IMG_DIRECTORY . $image_name);
+            return $image_name;
+        } else {
+            return false;
+        }
+    }
+
 
     private function loginValidation($username, $password)
     {
