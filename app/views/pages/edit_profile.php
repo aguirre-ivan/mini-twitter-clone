@@ -1,5 +1,7 @@
 <?php require_once APP . '/views/partials/head.php' ?>
 
+<?php var_dump($page_data['errors']) ?>
+
 <div class="user-logged-in-page edit-profile-page">
     <div class="user-logged-in-page__sidebar-first">
         <?php require_once APP . '/views/partials/left_menu.php' ?>

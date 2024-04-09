@@ -144,7 +144,6 @@ class UserController extends Controller
             $user = new User();
             $user_id = $_SESSION['user_id'];
             $user_data = $user->getUserById($user_id);
-            $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data]);
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $name = $_POST['name'];
@@ -159,7 +158,7 @@ class UserController extends Controller
 
                 $profile_image = $_FILES['profileImage'];
                 $header_image = $_FILES['headerImage'];
-                
+
                 $images_validation = array_unique(array_merge($this->validateImage($profile_image), $this->validateImage($header_image)));
                 
                 $errors = array_merge($errors, $images_validation);
@@ -177,6 +176,8 @@ class UserController extends Controller
                 } else {
                     $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array_merge($errors, $images_validation)]);
                 }
+            } else {
+                $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array()]);
             }
         }
     }
