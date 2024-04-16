@@ -149,32 +149,25 @@ class UserController extends Controller
                 $name = $_POST['name'];
                 $location = $_POST['location'];
                 $bio = $_POST['bio'];
-
-                $errors = array();
-                
-                if (empty($name)) {
-                    array_push($errors, 'El nombre es obligatorio');
-                }
-
                 $profile_image = $_FILES['profileImage'];
                 $header_image = $_FILES['headerImage'];
 
-                $images_validation = array_unique(array_merge($this->validateImage($profile_image), $this->validateImage($header_image)));
-                
-                $errors = array_merge($errors, $images_validation);
-                
-                $profile_image_upload = $this->uploadImage($profile_image);
-                $header_image_upload = $this->uploadImage($header_image);
+                $filter_nulls = function($value) {
+                    return $value !== null;
+                };
 
-                if (!$profile_image_upload && !$header_image_upload) {
-                    array_push($errors, 'Error en la carga de imagenes');
-                }
+                $errors = array_filter(array(
+                    $this->handleUserNameField($user_id, $name),
+                    $this->handleLocationField($user_id, $location),
+                    $this->handleBioField($user_id, $bio),
+                    $this->handleProfileImageField($user_id, $profile_image),
+                    $this->handleHeaderImageField($user_id, $header_image)
+                ), $filter_nulls);
 
                 if (empty($errors)) {
-                    $user->editUser($user_id, $name, $location, $bio, $profile_image_upload, $header_image_upload);
-                    $this->redirect('/user/profile');
+                    $this->redirect('/user/profile/' . $user_id);
                 } else {
-                    $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array_merge($errors, $images_validation)]);
+                    $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => $errors]);
                 }
             } else {
                 $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array()]);
@@ -182,28 +175,73 @@ class UserController extends Controller
         }
     }
 
+    private function handleUserNameField($user_id, $name) {
+        if (empty($name)) {
+            return 'El nombre es obligatorio';
+        }
+
+        $this->updateUserField($user_id, 'Name', $name);
+    }
+
+    private function handleLocationField($user_id, $location) { 
+        $this->updateUserField($user_id, 'Location', $location);
+    }
+
+    private function handleBioField($user_id, $bio) { 
+        $this->updateUserField($user_id, 'Bio', $bio);
+    }
+
+    private function handleProfileImageField($user_id, $profile_image) {
+        return $this->handleImageField($user_id, $profile_image, 'ProfileImage');
+    }
+
+    private function handleHeaderImageField($user_id, $header_image) { 
+        return $this->handleImageField($user_id, $header_image, 'HeaderImage');
+    }
+
+    private function handleImageField($user_id, $image, $image_field_name) {
+        if ($image['size'] != 0) {
+            $image_validation = $this->validateImage($image);
+            if (!empty($image_validation)) {
+                return $image_validation;
+            }
+    
+            $image_name = $this->uploadImage($image);
+            if (!$image_name) {
+                return 'Error en la carga de imagen';
+            }
+    
+            $this->updateUserField($user_id, $image_field_name, $image_name);
+        }
+    }
+
+    private function updateUserField($user_id, $field, $value) {
+        $this->loadModel('User');
+        $user = new User();
+        $userMethod = 'update' . $field . 'Field';
+
+        $user->$userMethod($user_id, $value);
+    }
+
     private function validateImage($image)
     {
-        $errors = array();
-
         $allowed_types = array('image/jpeg', 'image/png', 'image/gif');
         $max_size = MAX_UPLOAD_SIZE_MB * 1024 * 1024;
 
         if ($image['size'] > $max_size) {
-            array_push($errors, 'Las  no pueden pesar mas de ' . MAX_UPLOAD_SIZE_MB . 'MB');
+            return 'Las  no pueden pesar mas de ' . MAX_UPLOAD_SIZE_MB . 'MB';
         }
 
         if (!in_array($image['type'], $allowed_types)) {
-            array_push($errors, 'Solo se permiten imagenes en formato JPG, PNG o GIF');
+            return 'Solo se permiten imagenes en formato JPG, PNG o GIF';
         }
 
-        return $errors;
+        return '';
     }
 
     private function uploadImage($image) {
         $image_name = uniqid() . $image['name'];
         if (move_uploaded_file($image['tmp_name'], UPLOAD_IMG_DIRECTORY . $image_name)) {
-            dd(UPLOAD_IMG_DIRECTORY . $image_name);
             return $image_name;
         } else {
             return false;
