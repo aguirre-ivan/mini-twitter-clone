@@ -1,7 +1,17 @@
 <?php
 
+/**
+ * Class TweetController
+ *
+ * Controller for managing tweets and related operations.
+ */
 class TweetController extends Controller
 {
+    /**
+     * Create a new tweet.
+     *
+     * @return mixed|null The created tweet, or null if no tweet was created.
+     */
     public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,6 +32,11 @@ class TweetController extends Controller
         }
     }
 
+    /**
+     * Get all tweets.
+     *
+     * @return array An array containing all tweets.
+     */
     public function allTweets()
     {
         $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
@@ -29,10 +44,17 @@ class TweetController extends Controller
         $this->loadModel('Tweet');
         $tweet = new Tweet();
         $tweets = $tweet->getAllTweets();
-        
+
         return $tweets;
     }
 
+    /**
+     * Get tweets by a specific user.
+     *
+     * @param int $user_id The ID of the user whose tweets are being retrieved.
+     *
+     * @return array An array containing all tweets by the specified user.
+     */
     public function tweetsByUser($user_id)
     {
         $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
@@ -40,10 +62,17 @@ class TweetController extends Controller
         $this->loadModel('Tweet');
         $tweet = new Tweet();
         $tweets = $tweet->getAllTweetsByUser($user_id);
-        
+
         return $tweets;
     }
 
+    /**
+     * Get tweets from users that a specific user is following.
+     *
+     * @param int $user_id The ID of the user whose followed tweets are being retrieved.
+     *
+     * @return array An array containing tweets from users that the specified user is following.
+     */
     public function followingTweets($user_id)
     {
         $this->handleUrlAccessRestriction(__CLASS__, __FUNCTION__);
