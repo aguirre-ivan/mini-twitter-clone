@@ -43,8 +43,12 @@ class UserController extends Controller
                 $followController->$followMethod();
             } else {
                 $page_title = $user_data['name'] . ' (@' . $user_data['username'] . ') / Twitter';
+                $this->loadModel('Follow');
+                $follow = new Follow();
+                $following_count = $follow->getFollowingCount($user_id);
+                $followers_count = $follow->getFollowersCount($user_id);
 
-                $this->loadView('profile', ['title' => $page_title, 'user_data' => $user_data, 'tweets' => $tweets, 'profile_button' => $profile_button]);
+                $this->loadView('profile', ['title' => $page_title, 'user_data' => $user_data, 'tweets' => $tweets, 'following_count' => $following_count, 'followers_count' => $followers_count, 'profile_button' => $profile_button]);
             }
         }
     }
