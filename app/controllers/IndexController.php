@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * IndexController
+ *
+ * This controller manages actions related to the index page and user feed.
+ */
 class IndexController extends Controller
 {
+    /**
+     * IndexController constructor
+     */
     public function index()
     {
         $this->isIndexInUrl();
@@ -12,6 +20,9 @@ class IndexController extends Controller
         }
     }
 
+    /**
+     * Displays the user's feed.
+     */
     public function feed()
     {
         if (!isset($_SESSION['user_id'])) {
@@ -27,6 +38,9 @@ class IndexController extends Controller
         }
     }
 
+    /**
+     * Displays the user's following feed.
+     */
     public function following()
     {
         if (!isset($_SESSION['user_id'])) {
