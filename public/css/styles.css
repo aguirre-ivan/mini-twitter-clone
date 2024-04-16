@@ -56,6 +56,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.3rem;
   font-weight: bold;
   width: 100%;
+  background-color: #000;
 }
 
 .alert-box {
@@ -301,16 +302,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px 35px;
   border: 0.5px solid gray;
 }
-.profile-container__username {
-  font-size: 3rem;
+.profile-container__name {
+  font-size: 2rem;
   font-weight: bold;
+}
+.profile-container__username {
+  color: #8b98a5;
+  font-size: 1.5rem;
 }
 .profile-container__username::before {
   content: "@";
-}
-.profile-container__email {
-  color: #8b98a5;
-  font-size: 1.5rem;
 }
 
 .add-tweet-form {

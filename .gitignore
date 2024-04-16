@@ -1,1 +1,3 @@
 data
+public/files/images/*
+!public/files/images/default

@@ -18,6 +18,7 @@ class UserController extends Controller
         $this->loadModel('User');
         $user = new User();
         $user_data = $user->getUserById($user_id);
+        $profile_button = $this->getButtonProfile($user_id);
 
         if (!$user_data) {
             $this->notFound();
@@ -41,7 +42,13 @@ class UserController extends Controller
 
                 $followController->$followMethod();
             } else {
-                $this->loadView('profile', ['title' => '@' . $user_data['username'] . ' / Twitter', 'user_data' => $user_data, 'tweets' => $tweets]);
+                $page_title = $user_data['name'] . ' (@' . $user_data['username'] . ') / Twitter';
+                $this->loadModel('Follow');
+                $follow = new Follow();
+                $following_count = $follow->getFollowingCount($user_id);
+                $followers_count = $follow->getFollowersCount($user_id);
+
+                $this->loadView('profile', ['title' => $page_title, 'user_data' => $user_data, 'tweets' => $tweets, 'following_count' => $following_count, 'followers_count' => $followers_count, 'profile_button' => $profile_button]);
             }
         }
     }
@@ -54,11 +61,12 @@ class UserController extends Controller
             $this->loadModel('User');
             $user = new User();
 
+            $name = $_POST['name'];
             $username = $_POST['username'];
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $validation = $this->registerValidation($username, $email, $password);
+            $validation = $this->registerValidation($name, $username, $email, $password);
 
             if (!empty($validation)) {
                 $registration_errors = $validation;
@@ -68,7 +76,7 @@ class UserController extends Controller
                 $registration_errors = array($error);
                 $this->loadView('register', ['title' => 'Registrarse', 'registration_errors' => $registration_errors]);
             } else {
-                $user->createUser($username, $email, $password);
+                $user->createUser($name, $username, $email, $password);
                 $this->loadView('register_successful', ['title' => 'Registro existoso']);
             }
         } else {
@@ -76,9 +84,13 @@ class UserController extends Controller
         }
     }
 
-    private function registerValidation($username, $email, $password)
+    private function registerValidation($name, $username, $email, $password)
     {
         $errors = array();
+
+        if (empty($name)) {
+            array_push($errors, 'El nombre es obligatorio');
+        }
 
         if (empty($username)) {
             array_push($errors, 'El nombre de usuario es obligatorio');
@@ -128,6 +140,119 @@ class UserController extends Controller
         }
     }
 
+    public function edit() {
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/user/login');
+        } else {
+            $this->loadModel('User');
+            $user = new User();
+            $user_id = $_SESSION['user_id'];
+            $user_data = $user->getUserById($user_id);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $name = $_POST['name'];
+                $location = $_POST['location'];
+                $bio = $_POST['bio'];
+                $profile_image = $_FILES['profileImage'];
+                $header_image = $_FILES['headerImage'];
+
+                $filter_nulls = function($value) {
+                    return $value !== null;
+                };
+
+                $errors = array_filter(array(
+                    $this->handleUserNameField($user_id, $name),
+                    $this->handleLocationField($user_id, $location),
+                    $this->handleBioField($user_id, $bio),
+                    $this->handleProfileImageField($user_id, $profile_image),
+                    $this->handleHeaderImageField($user_id, $header_image)
+                ), $filter_nulls);
+
+                if (empty($errors)) {
+                    $this->redirect('/user/profile/' . $user_id);
+                } else {
+                    $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => $errors]);
+                }
+            } else {
+                $this->loadView('edit_profile', ['title' => 'Editar perfil', 'user_data' => $user_data, 'errors' => array()]);
+            }
+        }
+    }
+
+    private function handleUserNameField($user_id, $name) {
+        if (empty($name)) {
+            return 'El nombre es obligatorio';
+        }
+
+        $this->updateUserField($user_id, 'Name', $name);
+    }
+
+    private function handleLocationField($user_id, $location) { 
+        $this->updateUserField($user_id, 'Location', $location);
+    }
+
+    private function handleBioField($user_id, $bio) { 
+        $this->updateUserField($user_id, 'Bio', $bio);
+    }
+
+    private function handleProfileImageField($user_id, $profile_image) {
+        return $this->handleImageField($user_id, $profile_image, 'ProfileImage');
+    }
+
+    private function handleHeaderImageField($user_id, $header_image) { 
+        return $this->handleImageField($user_id, $header_image, 'HeaderImage');
+    }
+
+    private function handleImageField($user_id, $image, $image_field_name) {
+        if ($image['size'] != 0) {
+            $image_validation = $this->validateImage($image);
+            if (!empty($image_validation)) {
+                return $image_validation;
+            }
+    
+            $image_name = $this->uploadImage($image);
+            if (!$image_name) {
+                return 'Error en la carga de imagen';
+            }
+    
+            $this->updateUserField($user_id, $image_field_name, $image_name);
+        }
+    }
+
+    private function updateUserField($user_id, $field, $value) {
+        $this->loadModel('User');
+        $user = new User();
+        $userMethod = 'update' . $field . 'Field';
+
+        $user->$userMethod($user_id, $value);
+    }
+
+    private function validateImage($image)
+    {
+        $allowed_types = array('image/jpeg', 'image/png', 'image/gif');
+        $max_size = MAX_UPLOAD_SIZE_MB * 1024 * 1024;
+
+        if ($image['size'] > $max_size) {
+            return 'Las  no pueden pesar mas de ' . MAX_UPLOAD_SIZE_MB . 'MB';
+        }
+
+        if (!in_array($image['type'], $allowed_types)) {
+            return 'Solo se permiten imagenes en formato JPG, PNG o GIF';
+        }
+
+        return '';
+    }
+
+    private function uploadImage($image) {
+        $image_name = uniqid() . $image['name'];
+        if (move_uploaded_file($image['tmp_name'], UPLOAD_IMG_DIRECTORY . $image_name)) {
+            return $image_name;
+        } else {
+            return false;
+        }
+    }
+
+
     private function loginValidation($username, $password)
     {
         $errors = array();
@@ -156,5 +281,20 @@ class UserController extends Controller
         $followController = new FollowController();
         $followController->setUser($user_id);
         $users = $followController->notFollowing($user_id);
+    }
+
+    private function getButtonProfile($user_id)
+    {
+        $this->loadModel('Follow');
+        $follow = new Follow();
+        $isFollowing = $follow->isFollowing($_SESSION['user_id'], $user_id);
+
+        if ($isFollowing) {
+            return array('text' => 'Dejar de seguir', 'link' => '/user/profile/' . $user_id . '/unfollow');
+        } elseif ($_SESSION['user_id'] == $user_id) {
+            return array('text' => 'Editar perfil', 'link' => '/user/edit');
+        }
+
+        return array('text' => 'Seguir', 'link' => '/user/profile/' . $user_id . '/follow');
     }
 }
