@@ -295,6 +295,37 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 1px;
 }
 
+.project-info {
+  display: none;
+}
+@media screen and (min-width: 1000px) {
+  .project-info {
+    background-color: #1e2732;
+    padding: 12px;
+    margin: 12px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+.project-info__title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.project-info__description {
+  font-size: 16px;
+  font-weight: 500;
+}
+.project-info__links {
+  margin-top: 5px;
+}
+.project-info__links ul {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .profile-container {
   display: flex;
   flex-direction: column;
