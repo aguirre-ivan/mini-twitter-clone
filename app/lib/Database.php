@@ -22,7 +22,7 @@ class Database
      * 
      * Establishes a PDO connection using the database credentials defined in the config.
      */
-    private function __construct()
+    public function __construct()
     {
         $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
         $this->pdo = new PDO($dsn, DB_USER, DB_PASS);
