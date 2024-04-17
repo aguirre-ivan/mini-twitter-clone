@@ -1,7 +1,12 @@
 .user-logged-in-page {
     display: grid;
-    grid-template-columns: 0.7fr 2fr 0.7fr;
+    grid-template-columns: 0.1fr 10fr;
     max-width: 1200px;
+
+    @media screen and (min-width: $breakpoint-l) {
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 20px;
+    }
 
     &__main-container {
         display: flex;

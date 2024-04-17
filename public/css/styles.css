@@ -258,8 +258,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .user-logged-in-page {
   display: grid;
-  grid-template-columns: 0.7fr 2fr 0.7fr;
+  grid-template-columns: 0.1fr 10fr;
   max-width: 1200px;
+}
+@media screen and (min-width: 1000px) {
+  .user-logged-in-page {
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+  }
 }
 .user-logged-in-page__main-container {
   display: flex;
@@ -281,46 +287,65 @@ h1, h2, h3, h4, h5, h6 {
 }
 .user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper {
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 10px 0;
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper i {
-  width: 15px;
+@media screen and (min-width: 1000px) {
+  .user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper {
+    padding: 10px 20px;
+  }
 }
-.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper div {
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper__icon {
+  font-size: 25px;
+}
+@media screen and (min-width: 1000px) {
+  .user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper__icon {
+    font-size: 16px;
+  }
+}
+.user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper__item-text {
+  display: none;
   font-size: 1.3rem;
   font-weight: bold;
   padding-top: 1px;
 }
+@media screen and (min-width: 1000px) {
+  .user-logged-in-page__sidebar-first .sidebar-menu li a .link-wrapper__item-text {
+    display: block;
+  }
+}
 
-.project-info {
+.user-logged-in-page__sidebar-second {
   display: none;
 }
 @media screen and (min-width: 1000px) {
-  .project-info {
-    background-color: #1e2732;
-    padding: 12px;
-    margin: 12px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  .user-logged-in-page__sidebar-second {
+    display: block;
   }
 }
-.project-info__title {
+.user-logged-in-page__sidebar-second .project-info {
+  background-color: #1e2732;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.user-logged-in-page__sidebar-second .project-info__title {
   font-size: 20px;
   font-weight: bold;
 }
-.project-info__description {
+.user-logged-in-page__sidebar-second .project-info__description {
   font-size: 16px;
   font-weight: 500;
 }
-.project-info__links {
+.user-logged-in-page__sidebar-second .project-info__links {
   margin-top: 5px;
 }
-.project-info__links ul {
+.user-logged-in-page__sidebar-second .project-info__links ul {
   display: flex;
   align-items: center;
   gap: 10px;
