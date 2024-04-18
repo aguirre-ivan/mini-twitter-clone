@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    textareaLimit();
+    $('.twitter-sign-input').on('input', textareaLimit);
 });
 
 function textareaLimit() {
@@ -9,7 +9,4 @@ function textareaLimit() {
     if (currentLength > maxLength) {
         $('.twitter-sign-input').val($('.twitter-sign-input').val().substring(0, maxLength));
     }
-
-    var charLeft = maxLength - currentLength;
-    $('#charLeft').text(charLeft);
 }

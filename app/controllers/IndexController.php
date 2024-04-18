@@ -33,8 +33,11 @@ class IndexController extends Controller
             $tweets = $tweet->getAllTweets();
             $this->loadController('TweetController');
             $tweetController = new TweetController();
+            $this->loadModel('User');
+            $user = new User();
+            $user_data = $user->getUserById($_SESSION['user_id']);
             $tweets = $tweetController->allTweets();
-            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets, 'feed_type' => 'index']);
+            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets, 'feed_type' => 'index', 'user_data' => $user_data]);
         }
     }
 

@@ -9,7 +9,7 @@
         font-size: 2rem;
         font-weight: bold;
     }
-    
+
     &__username {
         color: #8b98a5;
         font-size: 1.5rem;
@@ -20,66 +20,88 @@
     }
 }
 
-.add-tweet-form {
+.add-tweet-form-container {
     position: relative;
-    height: 155px;
-
-    textarea.twitter-sign-input {
-        background-color: transparent;
-        border-radius: 0;
-        border: solid 0.5px gray;
-        resize: none;
-        position: absolute;
-
-        &:focus {
-            outline: none;
-            box-shadow: none;
-        }
-    }
-
-    button.twitter-btn {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        padding: 5px 15px;
-        width: auto;
-        font-size: 1rem;
-    }
-}
-
-.tweets-container {
     border: solid 0.5px gray;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    max-height: 70vh;
 
-    &::-webkit-scrollbar {
-        display: none;
+    .user-profile-img {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
-    .tweet {
-        border-bottom: solid 0.5px gray;
-        padding: 15px;
-        gap: 15px;
-        display: flex;
-        flex-direction: column;
+    .add-tweet-form {
+        height: 155px;
 
-        &:last-child {
-            border-bottom: none;
-        }
+        textarea.twitter-sign-input {
+            position: absolute;
+            background-color: transparent;
+            border-radius: 0;
+            resize: none;
+            border: none;
+            left: 60px;
+            width: calc(100% - 60px);
 
-        &__username {
-            font-weight: bold;
-            color: #8b98a5;
-
-            &::before {
-                content: '@';
+            &:focus {
+                outline: none;
+                box-shadow: none;
             }
         }
 
-        &__body {
-            word-wrap: break-word;
+        button.twitter-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 15px;
+            width: auto;
+            font-size: 1rem;
+        }
+    }
+
+    .tweets-container {
+        border: solid 0.5px gray;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        max-height: 70vh;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tweet {
+            border-bottom: solid 0.5px gray;
+            padding: 15px;
+            gap: 15px;
+            display: flex;
+            flex-direction: column;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &__username {
+                font-weight: bold;
+                color: #8b98a5;
+
+                &::before {
+                    content: '@';
+                }
+            }
+
+            &__body {
+                word-wrap: break-word;
+            }
         }
     }
 }
