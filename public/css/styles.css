@@ -100,6 +100,49 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
 }
 
+.page-not-found {
+  display: grid;
+  max-width: 1200px;
+}
+.page-not-found.page-not-found--logged-in {
+  grid-template-columns: 0.1fr 10fr;
+}
+@media screen and (min-width: 1000px) {
+  .page-not-found.page-not-found--logged-in {
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+  }
+}
+.page-not-found__main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: column;
+  gap: 15px;
+  padding: 50px 0;
+}
+.page-not-found__main-container h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.page-not-found__main-container p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+.page-not-found__main-container a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1D9BF0;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.page-not-found__main-container a:hover {
+  color: #1A91DC;
+  transition: all 0.3s ease-in-out;
+}
+
 .user-not-logged-in {
   display: flex;
   align-items: center;
@@ -196,10 +239,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 600px;
   padding: 40px;
 }
-.user-access-page__site-branding {
-  width: 60px;
-  height: 60px;
-}
 .user-access-page__site-branding i {
   font-size: 4.5em;
 }
@@ -213,31 +252,37 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   color: #fff;
 }
-.user-access-page__body .login-form, .user-access-page__body .registration-form {
+.user-access-page__body .login-form,
+.user-access-page__body .registration-form {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
-.user-access-page__body .login-form form, .user-access-page__body .registration-form form {
+.user-access-page__body .login-form form,
+.user-access-page__body .registration-form form {
   display: flex;
   align-items: center;
   gap: 40px;
   flex-direction: column;
   max-width: 500px;
 }
-.user-access-page__body .login-form form input, .user-access-page__body .registration-form form input {
+.user-access-page__body .login-form form input,
+.user-access-page__body .registration-form form input {
   color: #000;
 }
-.user-access-page .user-signup, .user-access-page .user-signin {
+.user-access-page .user-signup,
+.user-access-page .user-signin {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.user-access-page .user-signup p, .user-access-page .user-signin p {
+.user-access-page .user-signup p,
+.user-access-page .user-signin p {
   font-weight: bold;
   color: #fff;
 }
-.user-access-page .user-signup p a, .user-access-page .user-signin p a {
+.user-access-page .user-signup p a,
+.user-access-page .user-signin p a {
   color: #1D9BF0;
 }
 .user-access-page .successful-action {
@@ -354,15 +399,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.user-logged-in-page__sidebar-second {
+.sidebar-second {
   display: none;
 }
 @media screen and (min-width: 1000px) {
-  .user-logged-in-page__sidebar-second {
+  .sidebar-second {
     display: block;
   }
 }
-.user-logged-in-page__sidebar-second .project-info {
+.sidebar-second .project-info {
   background-color: #1e2732;
   padding: 12px;
   margin: 12px;
@@ -371,18 +416,18 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 5px;
 }
-.user-logged-in-page__sidebar-second .project-info__title {
+.sidebar-second .project-info__title {
   font-size: 20px;
   font-weight: bold;
 }
-.user-logged-in-page__sidebar-second .project-info__description {
+.sidebar-second .project-info__description {
   font-size: 16px;
   font-weight: 500;
 }
-.user-logged-in-page__sidebar-second .project-info__links {
+.sidebar-second .project-info__links {
   margin-top: 5px;
 }
-.user-logged-in-page__sidebar-second .project-info__links ul {
+.sidebar-second .project-info__links ul {
   display: flex;
   align-items: center;
   gap: 10px;
