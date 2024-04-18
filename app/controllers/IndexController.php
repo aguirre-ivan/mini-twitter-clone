@@ -34,7 +34,7 @@ class IndexController extends Controller
             $this->loadController('TweetController');
             $tweetController = new TweetController();
             $tweets = $tweetController->allTweets();
-            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets]);
+            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets, 'feed_type' => 'index']);
         }
     }
 
@@ -50,7 +50,7 @@ class IndexController extends Controller
             $this->loadController('TweetController');
             $tweetController = new TweetController();
             $tweets = $tweetController->followingTweets($_SESSION['user_id']);
-            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets]);
+            $this->loadView('feed', ['title' => 'Inicio / Twitter', 'tweets' => $tweets, 'feed_type' => 'following']);
         }
     }
 }

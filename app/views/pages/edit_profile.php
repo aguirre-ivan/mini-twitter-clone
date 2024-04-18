@@ -3,7 +3,7 @@
 <?php var_dump($page_data['errors']); ?>
 
 <div class="user-logged-in-page edit-profile-page">
-    <div class="user-logged-in-page__sidebar-first">
+    <div class="user-logged-in-page__sidebar-first sidebar-first">
         <?php require_once APP . '/views/partials/left_menu.php' ?>
     </div>
     <div class="user-logged-in-page__main-container">
@@ -39,7 +39,7 @@
             </form>
         </div>
     </div>
-    <div class="user-logged-in-page__sidebar-first">
+    <div class="user-logged-in-page__sidebar-second sidebar-second">
         <?php require_once APP . '/views/partials/project_info.php' ?>
     </div>
 </div>
