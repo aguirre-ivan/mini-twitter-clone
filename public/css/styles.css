@@ -450,34 +450,35 @@ h1, h2, h3, h4, h5, h6 {
   width: auto;
   font-size: 1rem;
 }
-.add-tweet-form-container .tweets-container {
+
+.tweets-container {
   border: solid 0.5px gray;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   max-height: 70vh;
 }
-.add-tweet-form-container .tweets-container::-webkit-scrollbar {
+.tweets-container::-webkit-scrollbar {
   display: none;
 }
-.add-tweet-form-container .tweets-container .tweet {
+.tweets-container .tweet {
   border-bottom: solid 0.5px gray;
   padding: 15px;
   gap: 15px;
   display: flex;
   flex-direction: column;
 }
-.add-tweet-form-container .tweets-container .tweet:last-child {
+.tweets-container .tweet:last-child {
   border-bottom: none;
 }
-.add-tweet-form-container .tweets-container .tweet__username {
+.tweets-container .tweet__username {
   font-weight: bold;
   color: #8b98a5;
 }
-.add-tweet-form-container .tweets-container .tweet__username::before {
+.tweets-container .tweet__username::before {
   content: "@";
 }
-.add-tweet-form-container .tweets-container .tweet__body {
+.tweets-container .tweet__body {
   word-wrap: break-word;
 }
 

@@ -22,4 +22,3 @@ $profile_image = $page_data['user_data']['profile_image'] ?? DEFAULT_PROFILE_IMG
             type="submit">Tweet</button>
     </form>
 </div>
-<script src="/js/global.js"></script>

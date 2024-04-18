@@ -68,40 +68,41 @@
         }
     }
 
-    .tweets-container {
-        border: solid 0.5px gray;
+}
+
+.tweets-container {
+    border: solid 0.5px gray;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    max-height: 70vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tweet {
+        border-bottom: solid 0.5px gray;
+        padding: 15px;
+        gap: 15px;
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
-        max-height: 70vh;
 
-        &::-webkit-scrollbar {
-            display: none;
+        &:last-child {
+            border-bottom: none;
         }
 
-        .tweet {
-            border-bottom: solid 0.5px gray;
-            padding: 15px;
-            gap: 15px;
-            display: flex;
-            flex-direction: column;
+        &__username {
+            font-weight: bold;
+            color: #8b98a5;
 
-            &:last-child {
-                border-bottom: none;
+            &::before {
+                content: '@';
             }
+        }
 
-            &__username {
-                font-weight: bold;
-                color: #8b98a5;
-
-                &::before {
-                    content: '@';
-                }
-            }
-
-            &__body {
-                word-wrap: break-word;
-            }
+        &__body {
+            word-wrap: break-word;
         }
     }
 }
