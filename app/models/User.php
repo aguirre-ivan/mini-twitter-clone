@@ -85,7 +85,7 @@ class User
      */
     public function getUserById($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM users LEFT JOIN users_info ON users.id = users_info.user_id WHERE users.id = :id");
+        $stmt = $this->pdo->prepare("SELECT users.*, users_info.location, users_info.header_image, users_info.profile_image, users_info.bio FROM users LEFT JOIN users_info ON users.id = users_info.user_id WHERE users.id = :id");
         $stmt->execute(['id' => $id]);
         return $stmt->fetch();
     }

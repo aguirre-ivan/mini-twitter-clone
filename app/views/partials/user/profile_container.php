@@ -8,10 +8,10 @@ $user_id = $page_data['user_data']['id'];
 
 <div class="profile-container">
     <div class="profile-container__header-image">
-        <img src="/files/images/<?= $header_image ?>">
+        <img src="<?= IMG_DIRECTORY . $header_image ?>">
     </div>
     <div class="profile-container__profile-image">
-        <img src="/files/images/<?= $profile_image ?>">
+        <img src="<?= IMG_DIRECTORY . $profile_image ?>">
     </div>
     <div class="profile-container__name"><?= $page_data['user_data']['name'] ?></div>
     <div class="profile-container__username"><?= $page_data['user_data']['username'] ?></div>

@@ -6,6 +6,9 @@ define('APP', dirname(__DIR__));
 // Path to the directory where uploaded images will be stored
 define('UPLOAD_IMG_DIRECTORY', realpath(APP . '/../public/files/images/') . '/');
 
+// Path to the directory where uploaded images will be stored (from the public directory)
+define('IMG_DIRECTORY', '/files/images/');
+
 // Maximum allowed size for uploaded images (in megabytes)
 define('MAX_UPLOAD_SIZE_MB', 10);
 
