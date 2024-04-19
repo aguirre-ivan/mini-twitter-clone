@@ -326,6 +326,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   overflow: auto;
   border: solid 0.5px gray;
+  border-bottom: none;
 }
 .user-logged-in-page__main-container .feed-header ul {
   display: flex;
@@ -379,7 +380,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sidebar-first .sidebar-menu li a .link-wrapper {
   border-radius: 30px;
-  padding: 10px 0;
+  padding: 10px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -441,25 +442,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px 35px;
-  border: 0.5px solid gray;
-}
-.profile-container__name {
-  font-size: 2rem;
-  font-weight: bold;
-}
-.profile-container__username {
-  color: #8b98a5;
-  font-size: 1.5rem;
-}
-.profile-container__username::before {
-  content: "@";
 }
 
 .add-tweet-form-container {
@@ -551,6 +533,59 @@ h1, h2, h3, h4, h5, h6 {
 .tweets-container .tweet .tweet-container__body {
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+.profile-container__header {
+  margin-bottom: 80px;
+}
+.profile-container__header .header-image {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.profile-container__header .header-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile-container__header .profile-image {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: -85px;
+  margin-left: 1rem;
+  border: 5px solid #15202b;
+  position: relative;
+  z-index: 100;
+}
+.profile-container__header .profile-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.profile-container__info {
+  padding: 1rem;
+}
+.profile-container__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.profile-container__username {
+  color: #8b98a5;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.profile-container__username::before {
+  content: "@";
+}
+.profile-container__following:hover, .profile-container__followers:hover {
+  text-decoration: underline;
+}
+.profile-container__followers {
+  margin-left: 15px;
 }
 
 .edit-profile-page .back-profile-link {

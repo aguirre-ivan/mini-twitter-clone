@@ -13,6 +13,7 @@
         flex-direction: column;
         overflow: auto;
         border: solid 0.5px gray;
+        border-bottom: none;
 
         .feed-header {
             ul {
