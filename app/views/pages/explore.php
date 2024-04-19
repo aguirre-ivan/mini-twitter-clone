@@ -5,7 +5,9 @@
         <?php require_once APP . '/views/partials/left_menu.php' ?>
     </div>
     <div class="user-logged-in-page__main-container">
-        <h1>Conectar</h1>
+        <div class="explore-title">
+            <h1>Conectar</h1>
+        </div>
         <?php require_once APP . '/views/partials/user/users_container.php' ?>
     </div>
     <div class="user-logged-in-page__sidebar-second sidebar-second">
