@@ -568,6 +568,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .profile-container__info {
   padding: 1rem;
+  border-bottom: 0.5px solid #70808d;
 }
 .profile-container__name {
   font-size: 1.2rem;
