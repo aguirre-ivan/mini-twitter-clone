@@ -601,6 +601,14 @@ h1, h2, h3, h4, h5, h6 {
 .profile-container__followers {
   margin-left: 15px;
 }
+.profile-container__button {
+  position: absolute;
+  right: 1rem;
+  top: 325px;
+  width: auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
 
 .edit-profile-page .back-profile-link {
   display: flex;

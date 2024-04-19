@@ -42,7 +42,6 @@
         font-weight: bold;
     }
 
-
     &__username {
         color: #8b98a5;
         font-size: 1.1rem;
@@ -80,5 +79,14 @@
 
     &__followers {
         margin-left: 15px;
+    }
+
+    &__button {
+        position: absolute;
+        right: 1rem;
+        top: 325px;
+        width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
     }
 }
