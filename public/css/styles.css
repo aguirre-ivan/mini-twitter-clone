@@ -613,27 +613,27 @@ h1, h2, h3, h4, h5, h6 {
   color: #70808d;
 }
 .edit-profile-page .edit-profile-form {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
 }
-.edit-profile-page .edit-profile-form .edit-profile-form__input {
+.edit-profile-page .edit-profile-form form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
-.edit-profile-page .edit-profile-form .edit-profile-form__input label {
-  font-size: 1.5rem;
-  font-weight: bold;
+.edit-profile-page .edit-profile-form__item-container {
+  position: relative;
 }
-.edit-profile-page .edit-profile-form .edit-profile-form__input input {
-  padding: 0.5rem;
-  font-size: 1.5rem;
+.edit-profile-page .edit-profile-form__item-container label {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  color: #1D9BF0;
 }
-.edit-profile-page .edit-profile-form .edit-profile-form__input textarea {
-  padding: 0.5rem;
-  font-size: 1.5rem;
+.edit-profile-page .edit-profile-form__item-container .twitter-input {
+  padding: 22px 15px 8px 15px;
 }
 
 footer {
