@@ -535,6 +535,18 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
 }
 
+.empty-tweets-container {
+  padding: 20px;
+  font-weight: bold;
+}
+
+.explore-title {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: solid 0.5px gray;
+}
+
 .profile-container__header {
   margin-bottom: 80px;
 }
