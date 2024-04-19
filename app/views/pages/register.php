@@ -19,10 +19,10 @@
                         </ul>
                     </div>
                 <?php endif; ?>
-                <input class="twitter-sign-input" type="text" name="name" placeholder="Nombre">
-                <input class="twitter-sign-input" type="text" name="username" placeholder="Nombre de usuario">
-                <input class="twitter-sign-input" type="email" name="email" placeholder="Correo electrónico">
-                <input class="twitter-sign-input" type="password" name="password" placeholder="Contraseña">
+                <input class="twitter-input" type="text" name="name" placeholder="Nombre">
+                <input class="twitter-input" type="text" name="username" placeholder="Nombre de usuario">
+                <input class="twitter-input" type="email" name="email" placeholder="Correo electrónico">
+                <input class="twitter-input" type="password" name="password" placeholder="Contraseña">
                 <button class="twitter-btn twitter-btn--lightblue" type="submit">Unirse</button>
             </form>
         </div>

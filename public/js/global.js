@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    $('.twitter-sign-input').on('input', textareaLimit);
+    $('.add-tweet-form .twitter-input').on('input', textareaLimit);
 });
 
 function textareaLimit() {
     var maxLength = 140;
-    var currentLength = $('.twitter-sign-input').val().length;
+    var currentLength = $('.add-tweet-form .twitter-input').val().length;
 
     if (currentLength > maxLength) {
-        $('.twitter-sign-input').val($('.twitter-sign-input').val().substring(0, maxLength));
+        $('.add-tweet-form .twitter-input').val($('.add-tweet-form .twitter-input').val().substring(0, maxLength));
     }
 }
