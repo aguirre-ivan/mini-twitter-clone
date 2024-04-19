@@ -1,50 +1,51 @@
-.profile-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px 35px;
-    border: 0.5px solid gray;
-
-    &__name {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-    
-    &__username {
-        color: #8b98a5;
-        font-size: 1.5rem;
-
-        &::before {
-            content: '@';
-        }
-    }
-}
-
-.add-tweet-form {
+.add-tweet-form-container {
     position: relative;
-    height: 155px;
+    border: solid 0.5px gray;
 
-    textarea.twitter-sign-input {
-        background-color: transparent;
-        border-radius: 0;
-        border: solid 0.5px gray;
-        resize: none;
+    .user-profile-img {
         position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
 
-        &:focus {
-            outline: none;
-            box-shadow: none;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 
-    button.twitter-btn {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        padding: 5px 15px;
-        width: auto;
-        font-size: 1rem;
+    .add-tweet-form {
+        height: 155px;
+
+        textarea.twitter-input {
+            position: absolute;
+            background-color: transparent;
+            border-radius: 0;
+            resize: none;
+            border: none;
+            left: 60px;
+            width: calc(100% - 60px);
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        button.twitter-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 15px;
+            width: auto;
+            font-size: 1rem;
+        }
     }
+
 }
 
 .tweets-container {
@@ -63,23 +64,46 @@
         padding: 15px;
         gap: 15px;
         display: flex;
-        flex-direction: column;
 
         &:last-child {
             border-bottom: none;
         }
 
-        &__username {
-            font-weight: bold;
-            color: #8b98a5;
+        &__avatar {
+            width: 40px;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
 
-            &::before {
-                content: '@';
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
-        &__body {
-            word-wrap: break-word;
+        .tweet-container {
+            overflow: hidden;
+
+            &__username {
+                font-weight: bold;
+                color: #8b98a5;
+
+                &::before {
+                    content: '@';
+                }
+            }
+
+            &__body {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
         }
     }
+}
+
+.empty-tweets-container {
+    padding: 20px;
+    font-weight: bold;
 }

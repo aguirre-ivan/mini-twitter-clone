@@ -1,0 +1,93 @@
+.profile-container {
+    &__header {
+        margin-bottom: 80px;
+
+        .header-image {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .profile-image {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: calc(-170px / 2);
+            margin-left: 1rem;
+            border: 5px solid $background-color;
+            position: relative;
+            z-index: 100;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    &__info {
+        padding: 1rem;
+        border-bottom: 0.5px solid $secondary-color;
+    }
+
+    &__name {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    &__username {
+        color: #8b98a5;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+
+        &::before {
+            content: '@';
+        }
+    }
+
+    &__bio {
+        margin-bottom: 10px;
+    }
+
+    &__location,
+    &__created-at {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: $secondary-color;
+
+        i {
+            color: $secondary-color;
+        }
+    }
+
+    &__following,
+    &__followers {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__followers {
+        margin-left: 15px;
+    }
+
+    &__button {
+        position: absolute;
+        right: 1rem;
+        top: 325px;
+        width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}

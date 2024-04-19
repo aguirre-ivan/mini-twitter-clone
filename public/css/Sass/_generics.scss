@@ -28,14 +28,28 @@
     }
 }
 
-.twitter-sign-input {
+.twitter-input {
     padding: 15px;
-    border-radius: 10px;
-    border: 1px solid;
+    border-radius: 8px;
+    border: 3px solid;
     font-size: 1.3rem;
     font-weight: bold;
     width: 100%;
-    background-color: $dark-color;
+    background-color: $background-color;
+    border-color: $primary-color--light;
+    color: $white-color;
+
+    &::placeholder {
+        color: $secondary-color;
+        font-weight: 100;
+    }
+
+    &:focus-visible,
+    &:focus,
+    &:hover,
+    &:active {
+        border-color: $primary-color--light;
+    }
 }
 
 .alert-box {
@@ -82,4 +96,53 @@
         transform: scale(1.1);
         transition: all 0.3s ease-in-out;
     }
+}
+
+.page-not-found {
+    display: grid;
+    max-width: 1200px;
+
+    &.page-not-found--logged-in {
+        grid-template-columns: 0.1fr 10fr;
+
+        @media screen and (min-width: $breakpoint-l) {
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+        }
+    }
+
+    &__main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: column;
+        gap: 15px;
+        padding: 50px 0;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: $white-color;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: $white-color;
+        }
+
+        a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: $primary-color;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: $primary-color--light;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
 }

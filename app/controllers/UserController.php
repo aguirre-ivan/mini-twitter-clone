@@ -425,8 +425,12 @@ class UserController extends Controller
      * 
      * @return array The profile button data.
      */
-    private function getButtonProfile($user_id)
+    private function getButtonProfile($user_id = null)
     {
+        if (!isset($_SESSION['user_id'])) {
+            return array('text' => 'Iniciar sesion para seguir', 'link' => '/user/login');
+        }
+
         $this->loadModel('Follow');
         $follow = new Follow();
         $isFollowing = $follow->isFollowing($_SESSION['user_id'], $user_id);

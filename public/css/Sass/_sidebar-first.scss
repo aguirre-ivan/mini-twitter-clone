@@ -1,9 +1,9 @@
-.user-logged-in-page__sidebar-first {
+.sidebar-first {
     .sidebar-menu {
         display: flex;
         flex-direction: column;
         padding-left: 0;
-        
+
         li a {
             padding: 10px 20px;
             display: flex;
@@ -11,23 +11,35 @@
             &:hover .link-wrapper {
                 background-color: $secondary-color--light;
             }
-            
+
             .link-wrapper {
                 border-radius: 30px;
-                padding: 10px 20px;
+                padding: 10px;
                 display: flex;
                 align-items: center;
                 gap: 15px;
 
-
-                i {
-                    width: 15px;
+                @media screen and (min-width: $breakpoint-l) {
+                    padding: 10px 20px;
                 }
-    
-                div {
+
+                &__icon {
+                    font-size: 25px;
+
+                    @media screen and (min-width: $breakpoint-l) {
+                        font-size: 16px;
+                    }
+                }
+
+                &__item-text {
+                    display: none;
                     font-size: 1.3rem;
                     font-weight: bold;
                     padding-top: 1px;
+
+                    @media screen and (min-width: $breakpoint-l) {
+                        display: block;
+                    }
                 }
             }
         }

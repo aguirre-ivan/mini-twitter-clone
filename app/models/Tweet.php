@@ -42,7 +42,7 @@ class Tweet
      */
     public function getAllTweets()
     {
-        $stmt = $this->pdo->prepare("SELECT tweets.*, users.username AS author_username, users.name AS author_name FROM tweets LEFT JOIN users ON tweets.user_id = users.id ORDER BY tweets.created_at DESC");
+        $stmt = $this->pdo->prepare("SELECT tweets.*, users.username AS author_username, users.name AS author_name, users_info.profile_image AS author_image FROM tweets LEFT JOIN users ON tweets.user_id = users.id LEFT JOIN users_info ON users_info.user_id = users.id ORDER BY tweets.created_at DESC");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -56,7 +56,7 @@ class Tweet
      */
     public function getAllTweetsByUser($userId)
     {
-        $stmt = $this->pdo->prepare("SELECT tweets.*, users.username AS author_username, users.name AS author_name FROM tweets LEFT JOIN users ON tweets.user_id = users.id WHERE tweets.user_id = :user_id ORDER BY tweets.created_at DESC");
+        $stmt = $this->pdo->prepare("SELECT tweets.*, users.username AS author_username, users.name AS author_name, users_info.profile_image AS author_image FROM tweets LEFT JOIN users ON tweets.user_id = users.id LEFT JOIN users_info ON users_info.user_id = users.id WHERE tweets.user_id = :user_id ORDER BY tweets.created_at DESC");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
     }

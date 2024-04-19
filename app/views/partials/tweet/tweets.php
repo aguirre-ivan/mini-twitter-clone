@@ -1,16 +1,21 @@
 <?php if (!empty($page_data['tweets'])) : ?>
     <div class="tweets-container">
         <?php foreach ($page_data['tweets'] as $tweet) : ?>
+            <?php
+            $profile_img = $tweet['author_image'] ?? DEFAULT_PROFILE_IMG_PATH;
+            ?>
             <div class="tweet">
-                <div class="tweet__header">
-                    <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet__name">
-                        <?= $tweet['author_name'] ?>
-                    </a>
-                    <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet__username">
-                        <?= $tweet['author_username'] ?>
-                    </a>
+                <div class="tweet__avatar">
+                    <img src="<?= IMG_DIRECTORY . $profile_img ?>" alt="Avatar">
                 </div>
-                <div class="tweet__body"><?= $tweet['tweet'] ?></div>
+                <div class="tweet-container">
+                    <div class="tweet-container__header">
+                        <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet-container__name"><?= $tweet['author_name'] ?>
+                        </a>
+                        <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet-container__username"><?= $tweet['author_username'] ?></a>
+                    </div>
+                    <div class="tweet-container__body"><?= $tweet['tweet'] ?></div>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>

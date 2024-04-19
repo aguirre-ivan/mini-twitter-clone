@@ -1,0 +1,95 @@
+.edit-profile-page {
+    .back-profile-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-bottom: solid 0.5px gray;
+
+        a i:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .edit-profile-header {
+        width: 100%;
+        margin-bottom: 25px;
+
+        &__profile-header {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__profile-img {
+            width: 170px;
+            height: 170px;
+            margin-top: calc(-170px / 2);
+            margin-left: 1rem;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid $background-color;
+            position: relative;
+            z-index: 100;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__profile-name {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-left: 180px;
+            margin-top: calc(-170px / 2);
+
+            p {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    .edit-profile-form {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        &__item-container {
+            position: relative;
+
+            label {
+                position: absolute;
+                top: 5px;
+                left: 8px;
+                color: $primary-color;
+            }
+
+            .twitter-input {
+                padding: 22px 15px 8px 15px;
+            }
+        }
+    }
+}
