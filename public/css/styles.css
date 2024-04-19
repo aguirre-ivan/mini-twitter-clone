@@ -567,6 +567,51 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.05);
   transition: all 0.3s ease-in-out;
 }
+.edit-profile-page .edit-profile-header {
+  width: 100%;
+  margin-bottom: 25px;
+}
+.edit-profile-page .edit-profile-header__profile-header {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.edit-profile-page .edit-profile-header__profile-header img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.edit-profile-page .edit-profile-header__profile-img {
+  width: 170px;
+  height: 170px;
+  margin-top: -85px;
+  margin-left: 1rem;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 5px solid #15202b;
+  position: relative;
+  z-index: 100;
+}
+.edit-profile-page .edit-profile-header__profile-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.edit-profile-page .edit-profile-header__profile-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 180px;
+  margin-top: -85px;
+}
+.edit-profile-page .edit-profile-header__profile-name p {
+  color: #70808d;
+}
 .edit-profile-page .edit-profile-form {
   display: flex;
   flex-direction: column;
@@ -589,26 +634,6 @@ h1, h2, h3, h4, h5, h6 {
 .edit-profile-page .edit-profile-form .edit-profile-form__input textarea {
   padding: 0.5rem;
   font-size: 1.5rem;
-}
-.edit-profile-page .edit-profile-form .edit-profile-form__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-.edit-profile-page .edit-profile-form .edit-profile-form__button button {
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  background-color: #1D9BF0;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.edit-profile-page .edit-profile-form .edit-profile-form__button button:hover {
-  background-color: #1A91DC;
 }
 
 footer {
