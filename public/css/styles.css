@@ -547,6 +547,44 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: solid 0.5px gray;
 }
 
+.user-container {
+  display: flex;
+  padding: 1rem;
+  gap: 0.7rem;
+  border-bottom: solid 0.5px gray;
+}
+.user-container:hover {
+  background-color: rgba(247, 249, 249, 0.1);
+}
+.user-container__image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user-container__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-container__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.user-container__name {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.user-container__username {
+  font-size: 0.8rem;
+  color: #70808d;
+}
+.user-container__username::before {
+  content: "@";
+}
+
 .profile-container__header {
   margin-bottom: 80px;
 }
