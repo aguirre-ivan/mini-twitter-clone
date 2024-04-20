@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -530,6 +531,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .tweets-container .tweet .tweet-container__username::before {
   content: "@";
+}
+.tweets-container .tweet .tweet-container__date {
+  font-size: 0.9rem;
+  color: #8b98a5;
+}
+.tweets-container .tweet .tweet-container__date::before {
+  content: "•";
+  margin: 0 5px;
 }
 .tweets-container .tweet .tweet-container__body {
   overflow-wrap: break-word;
