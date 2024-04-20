@@ -95,6 +95,16 @@
                 }
             }
 
+            &__date {
+                font-size: 0.9rem;
+                color: #8b98a5;
+
+                &::before {
+                    content: '•';
+                    margin: 0 5px;
+                }
+            }
+
             &__body {
                 overflow-wrap: break-word;
                 word-wrap: break-word;
