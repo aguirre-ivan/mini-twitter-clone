@@ -91,52 +91,6 @@ class User
     }
 
     /**
-     * Get all users.
-     *
-     * @param int|null $limit Maximum number of users to retrieve.
-     *
-     * @return array An array containing all users.
-     */
-    public function getAllUsers($limit = null)
-    {
-        $sql = "SELECT * FROM users";
-        if ($limit) {
-            $sql .= " LIMIT $limit";
-        }
-        $stmt = $this->pdo->query($sql . " ORDER BY id DESC");
-        return $stmt->fetchAll();
-    }
-
-    /**
-     * Update user information.
-     *
-     * @param int    $id           The ID of the user.
-     * @param string $name         The user's name.
-     * @param string $location     The user's location.
-     * @param string $bio          The user's biography.
-     * @param string $headerImage  The URL of the user's header image.
-     * @param string $profileImage The URL of the user's profile image.
-     */
-    public function editUser($id, $name, $location, $bio, $headerImage, $profileImage)
-    {
-        $stmt = $this->pdo->prepare("UPDATE users SET name = :name WHERE id = :id");
-        $stmt->execute(['name' => $name, 'id' => $id]);
-
-        $stmt = $this->pdo->prepare("UPDATE users_info SET location = :location, bio = :bio WHERE user_id = :id");
-        $stmt->execute(['location' => $location, 'bio' => $bio, 'id' => $id]);
-
-        if ($headerImage) {
-            $stmt = $this->pdo->prepare("UPDATE users_info SET header_image = :headerImage WHERE user_id = :id");
-            $stmt->execute(['headerImage' => $headerImage, 'id' => $id]);
-        }
-
-        if ($profileImage) {
-            $stmt = $this->pdo->prepare("UPDATE users_info SET profile_image = :profileImage WHERE user_id = :id");
-            $stmt->execute(['profileImage' => $profileImage, 'id' => $id]);
-        }
-    }
-
-    /**
      * Update the name field of a user.
      *
      * @param int    $id   The ID of the user.

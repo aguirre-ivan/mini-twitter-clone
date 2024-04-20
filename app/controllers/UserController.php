@@ -415,7 +415,7 @@ class UserController extends Controller
         $this->loadController('FollowController');
         $followController = new FollowController();
         $followController->setUser($user_id);
-        $users = $followController->notFollowing($user_id);
+        $followController->notFollowing();
     }
 
     /**

@@ -73,7 +73,7 @@ class Follow
      */
     public function getFollowers($userId)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id IN (SELECT follower_id FROM follows WHERE followed_id = :user_id)");
+        $stmt = $this->pdo->prepare("SELECT users.*, users_info.profile_image, users_info.bio FROM users LEFT JOIN users_info ON users.id = users_info.user_id WHERE users.id IN (SELECT follower_id FROM follows WHERE followed_id = :user_id)");
         $stmt->execute(['user_id' => $userId]);
         return $stmt->fetchAll();
     }
