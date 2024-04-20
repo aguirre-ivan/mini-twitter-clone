@@ -3,6 +3,7 @@
         <?php foreach ($page_data['tweets'] as $tweet) : ?>
             <?php
             $profile_img = $tweet['author_image'] ?? DEFAULT_PROFILE_IMG_PATH;
+            $tweet_time = tweetTime(strtotime($tweet['created_at']));
             ?>
             <div class="tweet">
                 <div class="tweet__avatar">
@@ -13,6 +14,7 @@
                         <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet-container__name"><?= $tweet['author_name'] ?>
                         </a>
                         <a href="/user/profile/<?= $tweet['user_id'] ?>" class="tweet-container__username"><?= $tweet['author_username'] ?></a>
+                        <span class="tweet-container__date"><?= $tweet_time ?></span>
                     </div>
                     <div class="tweet-container__body"><?= $tweet['tweet'] ?></div>
                 </div>
