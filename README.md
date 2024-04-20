@@ -31,13 +31,15 @@ docker compose up -d
 
 The necessary database for running the project is set up using an SQL script located in docker-config/database/init/.
 
+Make sure to give permissions to `www-data:www-data` for `/public/files/` directory.
+
 ## Usage
 
 Once the server is up and running, you can access the web application at `http://localhost`.
 
 ## Preview
 
-// Todo
+![Preview](preview.png)
 
 ## Contribution
 
