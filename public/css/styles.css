@@ -416,6 +416,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (min-width: 1000px) {
   .sidebar-second {
     display: block;
+    margin-top: 20px;
   }
 }
 .sidebar-second .project-info {
@@ -535,7 +536,8 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
 }
 
-.empty-tweets-container {
+.empty-tweets-container,
+.empty-users-container {
   padding: 20px;
   font-weight: bold;
 }
@@ -619,6 +621,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-container__info {
   padding: 1rem;
   border-bottom: 0.5px solid #70808d;
+  position: relative;
 }
 .profile-container__name {
   font-size: 1.2rem;
@@ -655,7 +658,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-container__button {
   position: absolute;
   right: 1rem;
-  top: 325px;
+  top: -60px;
   width: auto;
   padding: 0.5rem 1rem;
   font-size: 1rem;
