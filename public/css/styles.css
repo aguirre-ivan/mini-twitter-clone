@@ -417,6 +417,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (min-width: 1000px) {
   .sidebar-second {
     display: block;
+    margin-top: 20px;
   }
 }
 .sidebar-second .project-info {
@@ -544,7 +545,8 @@ h1, h2, h3, h4, h5, h6 {
   word-wrap: break-word;
 }
 
-.empty-tweets-container {
+.empty-tweets-container,
+.empty-users-container {
   padding: 20px;
   font-weight: bold;
 }
@@ -554,6 +556,44 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.5rem;
   font-weight: bold;
   border-bottom: solid 0.5px gray;
+}
+
+.user-container {
+  display: flex;
+  padding: 1rem;
+  gap: 0.7rem;
+  border-bottom: solid 0.5px gray;
+}
+.user-container:hover {
+  background-color: rgba(247, 249, 249, 0.1);
+}
+.user-container__image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user-container__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-container__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.user-container__name {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.user-container__username {
+  font-size: 0.8rem;
+  color: #70808d;
+}
+.user-container__username::before {
+  content: "@";
 }
 
 .profile-container__header {
@@ -590,6 +630,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-container__info {
   padding: 1rem;
   border-bottom: 0.5px solid #70808d;
+  position: relative;
 }
 .profile-container__name {
   font-size: 1.2rem;
@@ -626,7 +667,7 @@ h1, h2, h3, h4, h5, h6 {
 .profile-container__button {
   position: absolute;
   right: 1rem;
-  top: 325px;
+  top: -60px;
   width: auto;
   padding: 0.5rem 1rem;
   font-size: 1rem;

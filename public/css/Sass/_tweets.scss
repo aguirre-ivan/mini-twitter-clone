@@ -45,7 +45,6 @@
             font-size: 1rem;
         }
     }
-
 }
 
 .tweets-container {
@@ -113,7 +112,8 @@
     }
 }
 
-.empty-tweets-container {
+.empty-tweets-container,
+.empty-users-container {
     padding: 20px;
     font-weight: bold;
 }
